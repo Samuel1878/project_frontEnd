@@ -65,9 +65,20 @@ export default Register = ({navigation}) => {
     const OTPInputHandler = (e) => {
         setOTP(e);
     }
+    const createUser = () => {
+            axios.post(
+              "http://localhost:4001/api/register/createUser",
+              {phoneNo:phoneNo,password:password},
+              {
+                headers: { "Content-Type": "application/json" },
+              }
+            ).then((res)=>{
+                console.log(res.data)
+            })
+    }
     const submitBtnHandler = () => {
         if (validNo && validPwd && validOTP){
-            console.log("created")
+            createUser()
             return
         }
         console.log("Not successed")

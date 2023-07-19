@@ -10,8 +10,8 @@ export default AccountScreen = ({navigation}) => {
         <ImageBackground
             resizeMode="cover"
             style={{flex:1}}
-            source={require("../../assets/account.jpg")}>
-                <BlurView intensity={25} style={styles.accountContainer}>
+            source={require("../../assets/account.png")}>
+                <BlurView intensity={5} style={styles.accountContainer}>
                     <View style={styles.accountBox}>
                         <LinearGradient 
                             colors={[app_one, app_three]} 

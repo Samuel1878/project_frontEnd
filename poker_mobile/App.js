@@ -11,7 +11,7 @@ const Stack = createStackNavigator();
 import Home from "./src/screen/home.js"
 import GameRoom from "./src/screen/gameRoom.js";
 import Welcome from "./src/screen/welcome.js";
-import login from "./src/screen/login.js";
+import LoginScreen from "./src/screen/login.js";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -56,7 +56,7 @@ export default function App() {
           options={{headerShown:false}}/>
         <Stack.Screen
           name="login"
-          component={login}
+          component={LoginScreen}
           options={{headerShown:false}}/>  
       </Stack.Navigator>
     </NavigationContainer>
