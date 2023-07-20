@@ -29,7 +29,7 @@ export default Register = ({navigation}) => {
     const req2FAServer = async() => {
          axios
            .post(
-             "http://localhost:4001/api/register/2faValidation",
+             "http://localhost:4001/api/account/2faValidation",
              { phoneNo: phoneNo },
              {
                headers: { "Content-Type": "application/json" },
@@ -67,7 +67,7 @@ export default Register = ({navigation}) => {
     }
     const createUser = () => {
             axios.post(
-              "http://localhost:4001/api/register/createUser",
+              "http://localhost:4001/api/account/createUser",
               {phoneNo:phoneNo,password:password},
               {
                 headers: { "Content-Type": "application/json" },

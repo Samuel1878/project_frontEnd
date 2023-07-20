@@ -317,13 +317,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   accountBg: {
-    resizeMode: "cover",
     position: "absolute",
     top: 0,
     left: 0,
     right: 0,
     bottom: 0,
-    borderRadius: 15,
   },
   accountBox: {
     backgroundColor: app_six,
@@ -434,6 +432,93 @@ const styles = StyleSheet.create({
   submitBtnTxt: {
     fontSize: 18,
     color: luxe_six,
+  },
+  //Login
+  loginContainer: {
+    flex: 1,
+    backgroundColor: app_four,
+  },
+  loginWrapCon: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    marginVertical: "5%",
+    backgroundColor: app_two,
+  },
+  loginBox: {
+    flex: 1,
+    marginVertical: 20,
+    backgroundColor: app_three,
+    width: "50%",
+    borderRadius: 20,
+    shadowColor: app_one,
+    shadowOpacity: 1,
+    borderRadius: 10,
+    shadowOffset: { width: 5, height: 5 },
+  },
+  loginHeader: {
+    fontSize: 24,
+    fontWeight: "bold",
+    color: app_one,
+    textAlign: "center",
+    padding: 5,
+  },
+  loginInput: {
+    backgroundColor: app_six,
+    width: "80%",
+    paddingVertical: 10,
+    marginHorizontal: "10%",
+    borderRadius: 10,
+    paddingHorizontal: 10,
+    color: app_one,
+    //hover
+    shadowColor: app_one,
+    shadowOpacity: 1,
+    shadowOffset: { width: 5, height: 5 },
+    position: "relative",
+  },
+  loginBtnCon: {
+    flex: 1,
+    paddingHorizontal: "5%",
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+    marginVertical:10,
+  },
+  loginBtn: {
+    padding: 10,
+    paddingHorizontal: 60,
+    borderRadius: 10,
+    backgroundColor: app_one,
+  },
+  regBtn: {
+    backgroundColor: app_four,
+    padding: 10,
+    paddingHorizontal: 50,
+    borderRadius: 10,
+  },
+  loginBtnTxt: {
+    color: app_six,
+  },
+  loginTrueIcon: {
+    position: "absolute",
+    paddingVertical: 10,
+    marginVertical: 30,
+  },
+  resetBtnCon: {
+    marginBottom:5,
+    paddingHorizontal: "10%",
+    color: app_one,
+    flexDirection: "row",
+    position: "relative",
+  },
+  resetBtn: {
+   
+  },
+  resetTxt: {
+    fontSize: 15,
+    color:app_one,
+    marginVertical:10
   },
 });
 export default styles;
