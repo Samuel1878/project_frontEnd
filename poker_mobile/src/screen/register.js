@@ -73,7 +73,9 @@ export default Register = ({navigation}) => {
                 headers: { "Content-Type": "application/json" },
               }
             ).then((res)=>{
-                console.log(res.data)
+                if(res.data.code===201){
+                  navigation.navigate("login")
+                }
             })
     }
     const submitBtnHandler = () => {

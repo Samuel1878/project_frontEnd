@@ -1,10 +1,26 @@
 import {StyleSheet, Platform, Dimensions} from "react-native";
 
 //Color theme logic
-const bg_normal = "rgb(38,38,38)";
-const bg_light = "rgb(204,204,204)";
-const bg_hover = "rgb(40,44,51)";
-const bg_heavy = "rgb(12,24,10)";
+const bg_normal = "rgb(45,41,38)";
+const bg_light = "rgb(248,247,242)";
+const bg_hover = "#888789";
+const bg_heavy = "rgb(20,21,23)";
+const bg_lover = "rgb(195,197,196)"
+const btn_normal = "rgb(53,75,113)";
+const btn_light = "";
+const btn_hover = "";
+const btn_lower = "";
+const btn_heavy = "";
+
+const _main = "rgb(230,187,74)";
+const _second = "rgb(192,162,55)";
+const _light = "rgb(243,230,52)"
+const grey_1 = "#dad9d8";
+const grey_2 = "#b9b8b6";
+const grey_3 = "#898681";
+const grey_4 = "#58534E";
+const grey_5 = "#282623";
+
 
 const app_one = "#29353C";
 const app_two = "#44576D";
@@ -35,25 +51,39 @@ const isSmallDevice = (height <= 568);
 
 
 const styles = StyleSheet.create({
-  //common
+  //common home
   container: {
-    backgroundColor: "none",
     flex: 1,
     flexDirection: "row",
   },
+  videoHome: {
+    position: "absolute",
+    zIndex: -1,
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+  },
   left: {
     flex: 1,
-    backgroundColor: app_one,
+    backgroundColor: btn_normal,
+    borderRightColor: _main,
+    borderRightWidth: 2,
+    shadowColor: grey_2,
+    shadowOffset: { width: 2, height: 2 },
+    shadowOpacity: 1,
+    zIndex: 9999,
   },
   right: {
     flex: 4.7,
     flexDirection: "column",
-    backgroundColor: app_three,
+    backgroundColor: "none",
+    position: "relative",
   },
   /////Top Bar
   navBar: {
-    height: 30,
-    width: "60%",
+    height: 45,
+    width: "50%",
     backgroundColor: "transparent",
     zIndex: 1,
     position: "absolute",
@@ -64,33 +94,64 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     gap: 10,
+    padding: 5,
+    borderRadius: "25%",
+  },
+  navDataCon: {
+    borderRadius: "25%",
+    flex: 1,
+    borderWidth: 2,
+    borderColor: _second,
+    shadowColor: _light,
+    shadowOpacity: 0.9,
+    overflow:"hidden"
+  },
+  navData: {
+    borderRadius: "25%",
+    flexDirection: "row",
+    justifyContent: "center",
+    position:"relative"
+  },
+  navChipTotal: {
+    color: _main,
+    fontWeight: "bold",
+    fontSize: 18,
+    marginVertical: 5,
+    textAlign: "right",
+  },
+  navChip: {
+    position: "absolute",
+    right: -2,
+    top: -5,
+    width: 40,
+    height: 40,
+    resizeMode: "center",
+  },
+  navUserBtn: {
+    width: 75,
+    height: 75,
+    borderRadius: "50%",
+    justifyContent: "center",
+    alignItems: "center",
   },
   userProfile: {
     borderRadius: 50,
-    backgroundColor: app_four,
-    width: 50,
-    height: 50,
-    borderRadius: 25,
+    backgroundColor: bg_normal,
+    width: 65,
+    height: 65,
+    borderRadius: 45,
+    shadowColor: bg_hover,
+    shadowOpacity: 1,
+    shadowOffset: { width: 5, height: 0 },
   },
   settingImage: {
-    width: 40,
-    height: 40,
-    backgroundColor: app_four,
-    borderRadius: 25,
+    width: 60,
+    height: 60,
   },
-  navData: {
-    flex: 1,
-    backgroundColor: "transparent",
-    borderRadius: 25,
-    borderColor: app_one,
-    borderWidth: 2,
-    shadowColor: app_one,
-    shadowOpacity: 0.7,
-  },
+
   ////Body part
   main: {
     position: "relative",
-    margin: "auto",
     alignItems: "center",
     backgroundColor: "transparent",
     marginHorizontal: 10,
@@ -103,17 +164,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     justifyContent: "center",
   },
-  footerLeft: {
-    height: 100,
-    width: 220,
-    position: "absolute",
-    backgroundColor: app_one,
-    zIndex: 1,
-    bottom: -70,
-    left: 0,
-    borderTopRightRadius: "50%",
-  },
-  footerCenter: {
+  footerPlayBtn: {
     position: "absolute",
     backgroundColor: "transparent",
     bottom: 10,
@@ -124,51 +175,68 @@ const styles = StyleSheet.create({
     gap: 0,
     borderRadius: "25%",
   },
-  footerRight: {
-    height: 100,
-    width: 220,
-    position: "absolute",
-    backgroundColor: app_one,
-    zIndex: 1,
-    bottom: -70,
-    right: 0,
-    borderTopLeftRadius: "50%",
-  },
-  buttonLeft: {
-    borderColor: luxe_one,
+
+  playBtn: {
+    borderColor: _second,
     borderWidth: 4,
     marginVertical: 0,
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    borderTopLeftRadius: "25%",
-    borderBottomLeftRadius: "25%",
+    borderRadius: "25%",
     overflow: "hidden",
   },
-  buttonRight: {
-    borderColor: luxe_two,
-    borderWidth: 4,
-    flex: 1,
+  playBtnBg: {
+    width: "100%",
+    height: "100%",
+    borderRadius: "25%",
     alignItems: "center",
     justifyContent: "center",
-    borderTopRightRadius: "25%",
-    borderBottomRightRadius: "25%",
   },
-  bgImage: {
-    flex: 1,
-    justifyContent: "center",
-    zIndex: 0,
+  playBtnTxt: {
+    textAlign: "center",
+    color: _main,
+    fontSize: 22,
+    fontWeight: "600",
+    fontFamily: "italino",
+  },
+  frameImg1: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    width: 150,
+    height: 150,
+    zIndex: 99,
+  },
+  frameImg2: {
+    position: "absolute",
+    bottom: 0,
+    right: 0,
+    width: 160,
+    height: 150,
+    transform: [{ rotate: "-90deg" }],
+    zIndex: 99,
+  },
+  frameImg3: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: 150,
+    height: 150,
+    transform: [{ rotate: "90deg" }],
+    zIndex: 99,
   },
   ///Body game entrance
   item: {
-    width: 680,
+    width: 600,
     flex: 1,
-    height: 200,
-    marginVertical: 10,
-    backgroundColor: app_two,
+    height: 300,
+    marginVertical: 15,
+    backgroundColor: bg_light,
     borderBottomRightRadius: 200,
     borderTopLeftRadius: "25%",
     overflow: "hidden",
+    zIndex: 0,
   },
   gameFlatBg: {
     height: "100%",
@@ -324,15 +392,20 @@ const styles = StyleSheet.create({
     bottom: 0,
   },
   accountBox: {
-    backgroundColor: app_six,
+    backgroundColor: bg_light,
     flex: 0.8,
     width: 400,
     height: 300,
-    borderRadius: 10,
+    borderRadius: 20,
     position: "relative",
+    opacity: 0.7,
+    shadowColor: bg_light,
+    shadowOpacity: 0.6,
+    shadowRadius: 20,
+    shadowOffset: { width: 5, height: 5 },
   },
   accountInnerBox: {
-    backgroundColor: app_four,
+    backgroundColor: bg_normal,
     marginVertical: 10,
     marginHorizontal: 10,
     justifyContent: "center",
@@ -342,8 +415,20 @@ const styles = StyleSheet.create({
     borderRadius: 15,
   },
   accBtn: {
-    width: 100,
-    height: 100,
+    width: 200,
+    backgroundColor: bg_light,
+    padding: 15,
+    margin: 25,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: "25%",
+    shadowColor: bg_light,
+    shadowOpacity: 0.5,
+  },
+  accBtnTxt: {
+    fontSize: 19,
+    color: bg_heavy,
+    fontWeight: "bold",
   },
   ///register
   regContainer: {
@@ -483,7 +568,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
-    marginVertical:10,
+    marginVertical: 10,
   },
   loginBtn: {
     padding: 10,
@@ -506,21 +591,19 @@ const styles = StyleSheet.create({
     marginVertical: 30,
   },
   resetBtnCon: {
-    marginBottom:5,
+    marginBottom: 5,
     paddingHorizontal: "10%",
     color: app_one,
     flexDirection: "row",
     position: "relative",
   },
-  resetBtn: {
-   
-  },
+  resetBtn: {},
   resetTxt: {
     fontSize: 15,
-    color:app_one,
-    marginVertical:10
+    color: app_one,
+    marginVertical: 10,
   },
 });
 export default styles;
-export{app_one,app_two,app_three,app_four,app_five,app_six, luxe_one, luxe_two, luxe_three,luxe_four,luxe_five,luxe_six,_error,_warn,_info}
+export{app_one,app_two,app_three,app_four,app_five,app_six, luxe_one, luxe_two, luxe_three,luxe_four,luxe_five,luxe_six,_error,_warn,_info,_main,_second,_light}
 

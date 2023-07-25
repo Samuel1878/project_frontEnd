@@ -1,15 +1,18 @@
 import { Text, TextInput, TouchableOpacity, View ,Image,Button,TouchableWithoutFeedback,Keyboard} from "react-native"
 import styles, { _error, app_four } from "../__Style";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
+import * as SecureStore from "expo-secure-store";
+import { AuthContext } from "../../App";
 const LoginScreen = ({ navigation }) => {
   const [phoneNo, setPhoneNo] = useState("");
   const [password, setPassword] = useState("");
   const [validNo, setValidNo] = useState(null);
   const [validPwd, setValidPwd] = useState(null);
-  const [user, setUser] = useState([])
+  const [user, setUser] = useState([]);
   const REGEX_NO = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{5}$/;
   const REGEX_PWD = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+  const {signIn} = useContext(AuthContext)
 
   const submitHandler = () => {
     if(validNo && validPwd){
@@ -25,7 +28,7 @@ const LoginScreen = ({ navigation }) => {
           return
         }
         setUser(res.data);
-        console.log(user.token)
+        signIn(user);
         
       }).catch((err)=>console.log(err))
     }

@@ -1,19 +1,22 @@
-import { Component,useState } from "react";
-import styles from "../__Style"
+import { Component,useEffect,useRef,useState } from "react";
+import styles, { _light, _main, _second } from "../__Style"
 import { Text, View ,ImageBackground, Image, TouchableOpacity,FlatList,SafeAreaView} from "react-native";
 import { BlurView } from 'expo-blur';
-const createBg = require("../../assets/createBg.jpg");
-const joinBg = require("../../assets/joinBg.jpg");
+import { Video, ResizeMode } from "expo-av";
+import {LinearGradient} from "expo-linear-gradient"
+// const createBg = require("../../assets/createBg.jpg");
+// const joinBg = require("../../assets/joinBg.jpg");
 const FlatData = [
     {
         id:1,
         name:"create_poker_room",
-        src:createBg
+        src:"#"
+       
     },
     {
         id:2,
         name:"join_poker_room",
-        src:joinBg
+        src:"#"
     },
     {
         id:3,
@@ -23,6 +26,7 @@ const FlatData = [
 ]
 
 const Home = ({navigation}) => {
+    const video = useRef(null)
     const [userPhoto, setUserPhoto] = useState("undefined");
     const Item = ({item}) => (
         <TouchableOpacity 
@@ -37,64 +41,93 @@ const Home = ({navigation}) => {
          {/* </ImageBackground> */}
         </TouchableOpacity>
       );
-
+    useEffect(()=>{
+        video.current.playAsync()
+    },[])
     return (
-        <View style={styles.container}>
-            <BlurView intensity={0} style={styles.left}> 
-                
-               
-            </BlurView>
-            <View style={styles.right}>
-            {/* <ImageBackground 
-                    source={require("../../assets/bgImage.jpg")} 
-                    resizeMode="cover" 
-                    style={styles.bgImage}> */}
-                        <View style={styles.navBar}>
-                            <View style={styles.navData}>
-                                <Text>Chip:20000</Text>
-                            </View>
-                            <Image
-                                source={require("../../assets/setting.png")}
-                                style={styles.settingImage}>
-
-                            </Image>
-                            <Image
-                                source={require("../../assets/defaultUser.png")}
-                                style={styles.userProfile}></Image>
-                        </View>
-                        <View style={styles.main}>
-                            <SafeAreaView>
-                                <FlatList
-                                        data={FlatData}
-                                        renderItem={({item}) => <Item item={item} />}
-                                        keyExtractor={item => item.id}
-                                        horizontal={false}
-                                        showsVerticalScrollIndicator={false}
-                                        />
-                            </SafeAreaView>
-                                
-                        </View>
-                        <View style={styles.footerLeft}>
-                            
-                        </View>
-                        <View style={styles.footerCenter}>
-                            
-                            <TouchableOpacity style={styles.buttonLeft}>
-                                <Text>Get reward</Text>
-                            </TouchableOpacity>
-                            
-                            <TouchableOpacity style={styles.buttonRight}>
-                                <Text>Get Chip</Text>
-                            </TouchableOpacity>
-                        </View>
-                        <View style={styles.footerRight}>
-                           
-                        </View>
-
-                {/* </ImageBackground> */}
-            </View>
-
+      <View style={styles.container}>
+        <Video
+          ref={video}
+          resizeMode={ResizeMode.COVER}
+          isLooping
+          useNativeControls={false}
+          source={require("../../assets/homeFlame.mp4")}
+          style={styles.videoHome}
+        />
+        <View style={styles.left}>
+          <ImageBackground
+            resizeMode="cover"
+            style={{ width: "100%", height: "100%" }}
+            source={require("../../assets/lineArt.png")}
+          ></ImageBackground>
         </View>
-    )
+        <View style={styles.right}>
+          <Image
+            source={require("../../assets/homeFrame1.png")}
+            style={styles.frameImg1}
+          />
+          <Image
+            source={require("../../assets/homeFrame3.png")}
+            style={styles.frameImg2}
+          />
+          <Image
+            source={require("../../assets/homeFrame2.png")}
+            style={styles.frameImg3}
+          />
+          <View style={styles.navBar}>
+            <BlurView intensity={80} style={styles.navDataCon}>
+              <ImageBackground
+                style={styles.navData}
+                source={require("../../assets/playBtn.jpg")}
+              >
+                <Text style={styles.navChipTotal}>Chip: 1000</Text>
+                <Image
+                  style={styles.navChip}
+                  source={require("../../assets/chip.png")}
+                />
+              </ImageBackground>
+            </BlurView>
+            <Image
+              source={require("../../assets/setting.png")}
+              style={styles.settingImage}
+            ></Image>
+            <TouchableOpacity onPress={() => navigation.navigate("#")}>
+              <LinearGradient
+                colors={[_main, _light, _second]}
+                style={styles.navUserBtn}
+              >
+                <Image
+                  source={require("../../assets/user.gif")}
+                  style={styles.userProfile}
+                ></Image>
+              </LinearGradient>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.main}>
+            <SafeAreaView>
+              <FlatList
+                initialNumToRender={1}
+                data={FlatData}
+                renderItem={({ item }) => <Item item={item} />}
+                keyExtractor={(item) => item.id}
+                horizontal={false}
+                showsVerticalScrollIndicator={false}
+              />
+            </SafeAreaView>
+          </View>
+          <View style={styles.footerPlayBtn}>
+            <TouchableOpacity style={styles.playBtn}>
+              <ImageBackground
+                resizeMode="cover"
+                source={require("../../assets/playBtn.jpg")}
+                style={styles.playBtnBg}
+              >
+                <Text style={styles.playBtnTxt}>Play Now</Text>
+              </ImageBackground>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </View>
+    );
 }
 export default Home;

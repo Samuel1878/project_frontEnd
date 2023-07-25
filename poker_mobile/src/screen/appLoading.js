@@ -1,5 +1,5 @@
 import {Text} from "react-native"
-export default AppLoading = () =>{
+export default AppLoadingView = () =>{
 
     return <Text>
         loading....
