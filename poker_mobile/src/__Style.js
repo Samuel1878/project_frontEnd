@@ -64,8 +64,9 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: 0,
   },
+  //Left
   left: {
-    flex: 1,
+    flex: 1.3,
     backgroundColor: btn_normal,
     borderRightColor: _main,
     borderRightWidth: 2,
@@ -73,6 +74,79 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 2, height: 2 },
     shadowOpacity: 1,
     zIndex: 9999,
+  },
+  leftCon: {
+    width: "100%",
+    height: "100%",
+    justifyContent: "space-around",
+    alignItems: "center",
+  },
+  logoCon:{
+    position:"relative"
+  },
+  logoImg: {
+    height: 120,
+    width: 120,
+    margin: "auto",
+  },
+  logoFrame:{
+    position:"absolute",
+    height:185,
+    width:180,
+    top:-40,
+    left:-30,
+    shadowColor:bg_normal,
+    shadowOpacity:.8,
+    shadowOffset:{width:5,height:5}
+  },
+  leftBtnCon: {
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  friendListCon: {
+    padding:10,
+    marginBottom: 10,
+    height: 100,
+    width: 180,
+    borderRadius: "20%",
+    shadowColor:_main,
+    shadowOpacity:1,
+    shadowOffset:{width:5,height:5}
+  },
+  friendListBox:{
+    width:"100%",
+    height:"100%",
+    backgroundColor:_main,
+    borderRadius:"10%",
+    shadowColor:bg_normal,
+    shadowOpacity:.9,
+    shadowOffset:{width:5,height:5},
+  },
+  //common
+  leftBtnBg: {
+    width: "100%",
+    height: "100%",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  getChipBtn: {
+    margin:5,
+    width: 170,
+    height: 40,
+    borderRadius:"50%",
+    borderColor:_second,
+    borderWidth:5,
+    overflow:"hidden",
+    shadowColor:bg_normal,
+    shadowOpacity:1,
+    shadowOffset:{width:5,height:5}
+  },
+  getChipBtnTxt: {
+    fontSize: 18,
+    fontWeight: "500",
+    color: _main,
+    fontFamily: "italino",
+    textAlign: "center",
   },
   right: {
     flex: 4.7,
@@ -104,13 +178,13 @@ const styles = StyleSheet.create({
     borderColor: _second,
     shadowColor: _light,
     shadowOpacity: 0.9,
-    overflow:"hidden"
+    overflow: "hidden",
   },
   navData: {
     borderRadius: "25%",
     flexDirection: "row",
     justifyContent: "center",
-    position:"relative"
+    position: "relative",
   },
   navChipTotal: {
     color: _main,
@@ -121,10 +195,10 @@ const styles = StyleSheet.create({
   },
   navChip: {
     position: "absolute",
-    right: -2,
-    top: -5,
-    width: 40,
-    height: 40,
+    right: 0,
+    top: 0,
+    width: 35,
+    height: 35,
     resizeMode: "center",
   },
   navUserBtn: {
@@ -136,7 +210,7 @@ const styles = StyleSheet.create({
   },
   userProfile: {
     borderRadius: 50,
-    backgroundColor: bg_normal,
+    backgroundColor: bg_heavy,
     width: 65,
     height: 65,
     borderRadius: 45,
@@ -230,13 +304,13 @@ const styles = StyleSheet.create({
   item: {
     width: 600,
     flex: 1,
-    height: 300,
+    height: 250,
     marginVertical: 15,
-    backgroundColor: bg_light,
     borderBottomRightRadius: 200,
     borderTopLeftRadius: "25%",
     overflow: "hidden",
     zIndex: 0,
+    backgroundColor:bg_hover
   },
   gameFlatBg: {
     height: "100%",
@@ -605,5 +679,5 @@ const styles = StyleSheet.create({
   },
 });
 export default styles;
-export{app_one,app_two,app_three,app_four,app_five,app_six, luxe_one, luxe_two, luxe_three,luxe_four,luxe_five,luxe_six,_error,_warn,_info,_main,_second,_light}
+export{app_one,app_two,app_three,app_four,app_five,app_six, luxe_one, luxe_two, luxe_three,luxe_four,luxe_five,luxe_six,_error,_warn,_info,_main,_second,_light,bg_normal,bg_heavy,bg_light,bg_hover}
 

@@ -1,5 +1,5 @@
 import { Component,useEffect,useRef,useState } from "react";
-import styles, { _light, _main, _second } from "../__Style"
+import styles, { _light, _main, _second, bg_heavy, bg_hover, bg_normal } from "../__Style"
 import { Text, View ,ImageBackground, Image, TouchableOpacity,FlatList,SafeAreaView} from "react-native";
 import { BlurView } from 'expo-blur';
 import { Video, ResizeMode } from "expo-av";
@@ -8,39 +8,45 @@ import {LinearGradient} from "expo-linear-gradient"
 // const joinBg = require("../../assets/joinBg.jpg");
 const FlatData = [
     {
-        id:1,
+      id:1,
+      name:"comming_soon",
+      src:"#"
+    },
+
+    {
+        id:2,
         name:"create_poker_room",
         src:"#"
        
     },
     {
-        id:2,
+        id:3,
         name:"join_poker_room",
         src:"#"
     },
-    {
-        id:3,
-        name:"chess",
-        src:"#",
-    }
+   
 ]
 
 const Home = ({navigation}) => {
     const video = useRef(null)
     const [userPhoto, setUserPhoto] = useState("undefined");
-    const Item = ({item}) => (
-        <TouchableOpacity 
-            style={styles.item}
-            onPress={()=>navigation.navigate(item.name)}>
-        
-         {/* <ImageBackground
-            source={item.src}
-            resizeMode="cover"
-            style={styles.gameFlatBg}> */}
-                {(item.name==="create_poker_room")?(<Text style={styles.h2Text}>Create a poker room and invite your friends</Text>):<Text style={styles.h2Text}>Your friends are waiting for you, join the room now</Text>}
-         {/* </ImageBackground> */}
-        </TouchableOpacity>
-      );
+    const [userChip, setUserChip] = useState("1000");
+    const Item = ({ item }) => (
+      <TouchableOpacity
+        style={styles.item}
+        onPress={() => navigation.navigate(item.name)}
+      >
+          {item.name === "create_poker_room" ? (
+            <Text style={styles.h2Text}>
+              Create a poker room and invite your friends
+            </Text>
+          ) : (
+            <Text style={styles.h2Text}>
+              Your friends are waiting for you, join the room now
+            </Text>
+          )}
+      </TouchableOpacity>
+    );
     useEffect(()=>{
         video.current.playAsync()
     },[])
@@ -57,9 +63,56 @@ const Home = ({navigation}) => {
         <View style={styles.left}>
           <ImageBackground
             resizeMode="cover"
-            style={{ width: "100%", height: "100%" }}
+            style={styles.leftCon}
             source={require("../../assets/lineArt.png")}
-          ></ImageBackground>
+          >
+            <View style={styles.logoCon}>
+              <Image
+                style={styles.logoImg}
+                source={require("../../assets/logoPoker.png")}
+              />
+              <Image 
+                style={styles.logoFrame}
+                source={require("../../assets/dragon.png")}
+              />
+            </View>
+
+            <View style={styles.leftBtnCon}>
+              <LinearGradient
+                start={{ x: 0.1, y: 0.2 }}
+                colors={[bg_heavy, bg_hover, bg_normal]}
+                style={styles.friendListCon}
+              >
+                <View style={styles.friendListBox}>
+
+                </View>
+              </LinearGradient>
+              <TouchableOpacity
+                onPress={() => navigation.navigate("#")}
+                style={styles.getChipBtn}
+              >
+                <ImageBackground
+                  resizeMode="cover"
+                  style={styles.leftBtnBg}
+                  source={require("../../assets/playBtn.jpg")}
+                >
+                  <Text style={styles.getChipBtnTxt}>Get Chip</Text>
+                </ImageBackground>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => navigation.navigate("#")}
+                style={styles.getChipBtn}
+              >
+                <ImageBackground
+                  resizeMode="cover"
+                  style={styles.leftBtnBg}
+                  source={require("../../assets/playBtn.jpg")}
+                >
+                  <Text style={styles.getChipBtnTxt}>Withdraw</Text>
+                </ImageBackground>
+              </TouchableOpacity>
+            </View>
+          </ImageBackground>
         </View>
         <View style={styles.right}>
           <Image
@@ -80,7 +133,7 @@ const Home = ({navigation}) => {
                 style={styles.navData}
                 source={require("../../assets/playBtn.jpg")}
               >
-                <Text style={styles.navChipTotal}>Chip: 1000</Text>
+                <Text style={styles.navChipTotal}>{`${userChip}  Chip`}</Text>
                 <Image
                   style={styles.navChip}
                   source={require("../../assets/chip.png")}
@@ -99,14 +152,14 @@ const Home = ({navigation}) => {
                 <Image
                   source={require("../../assets/user.gif")}
                   style={styles.userProfile}
-                ></Image>
+                />
               </LinearGradient>
             </TouchableOpacity>
           </View>
           <View style={styles.main}>
             <SafeAreaView>
               <FlatList
-                initialNumToRender={1}
+                initialNumToRender={2}
                 data={FlatData}
                 renderItem={({ item }) => <Item item={item} />}
                 keyExtractor={(item) => item.id}
