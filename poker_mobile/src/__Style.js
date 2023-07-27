@@ -6,11 +6,11 @@ const bg_light = "rgb(248,247,242)";
 const bg_hover = "#888789";
 const bg_heavy = "rgb(20,21,23)";
 const bg_lover = "rgb(195,197,196)"
-const btn_normal = "rgb(53,75,113)";
-const btn_light = "";
+const btn_normal = "rgb(48,68,102)";
+const btn_light = "rgb(53,74,114)";
 const btn_hover = "";
 const btn_lower = "";
-const btn_heavy = "";
+const btn_heavy = "rgb(38,55,73)";
 
 const _main = "rgb(230,187,74)";
 const _second = "rgb(192,162,55)";
@@ -70,57 +70,65 @@ const styles = StyleSheet.create({
     backgroundColor: btn_normal,
     borderRightColor: _main,
     borderRightWidth: 2,
-    shadowColor: grey_2,
-    shadowOffset: { width: 2, height: 2 },
-    shadowOpacity: 1,
-    zIndex: 9999,
+    shadowColor: _light,
+    shadowOffset: { width: 4, height: 0 },
+    shadowOpacity: 0.4,
+    zIndex: 0,
   },
   leftCon: {
     width: "100%",
     height: "100%",
     justifyContent: "space-around",
     alignItems: "center",
+    shadowColor: btn_heavy,
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    shadowOffset: { width: 10,height:5 },
   },
-  logoCon:{
-    position:"relative"
+  logoCon: {
+    position: "relative",
   },
   logoImg: {
     height: 120,
     width: 120,
     margin: "auto",
+    shadowColor: bg_heavy,
+    shadowRadius: 5,
+    shadowOpacity: 0.5,
+    shadowOffset: { width: 5, height: 5 },
   },
-  logoFrame:{
-    position:"absolute",
-    height:185,
-    width:180,
-    top:-40,
-    left:-30,
-    shadowColor:bg_normal,
-    shadowOpacity:.8,
-    shadowOffset:{width:5,height:5}
+  logoFrame: {
+    position: "absolute",
+    height: 185,
+    width: 180,
+    top: -40,
+    left: -30,
+    shadowColor: bg_normal,
+    shadowOpacity: 0.8,
+    shadowOffset: { width: 5, height: 5 },
   },
   leftBtnCon: {
     alignItems: "center",
     justifyContent: "space-between",
   },
   friendListCon: {
-    padding:10,
+    padding: 10,
     marginBottom: 10,
     height: 100,
     width: 180,
     borderRadius: "20%",
-    shadowColor:_main,
-    shadowOpacity:1,
-    shadowOffset:{width:5,height:5}
+    shadowColor: _main,
+    shadowOpacity: 1,
+    shadowOffset: { width: 5, height: 5 },
   },
-  friendListBox:{
-    width:"100%",
-    height:"100%",
-    backgroundColor:_main,
-    borderRadius:"10%",
-    shadowColor:bg_normal,
-    shadowOpacity:.9,
-    shadowOffset:{width:5,height:5},
+  friendListBox: {
+    width: "100%",
+    height: "100%",
+    backgroundColor: _main,
+    borderRadius: "10%",
+    shadowColor: bg_normal,
+    shadowOpacity: 0.9,
+    shadowOffset: { width: 5, height: 5 },
   },
   //common
   leftBtnBg: {
@@ -130,16 +138,17 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   getChipBtn: {
-    margin:5,
+    margin: 5,
     width: 170,
     height: 40,
-    borderRadius:"50%",
-    borderColor:_second,
-    borderWidth:5,
-    overflow:"hidden",
-    shadowColor:bg_normal,
-    shadowOpacity:1,
-    shadowOffset:{width:5,height:5}
+    borderRadius: "50%",
+    borderColor: _second,
+    borderWidth: 5,
+    overflow: "hidden",
+    shadowColor: bg_normal,
+    shadowOpacity: 1,
+    shadowRadius: 5,
+    shadowOffset: { width: 5, height: 5 },
   },
   getChipBtnTxt: {
     fontSize: 18,
@@ -281,6 +290,9 @@ const styles = StyleSheet.create({
     width: 150,
     height: 150,
     zIndex: 99,
+    shadowColor: _light,
+    shadowOpacity: 0.3,
+    shadowOffset: { width: 3, height: -3 },
   },
   frameImg2: {
     position: "absolute",
@@ -290,6 +302,9 @@ const styles = StyleSheet.create({
     height: 150,
     transform: [{ rotate: "-90deg" }],
     zIndex: 99,
+    shadowColor: _light,
+    shadowOpacity: 0.3,
+    shadowOffset: { width: 3, height: -3 },
   },
   frameImg3: {
     position: "absolute",
@@ -297,8 +312,11 @@ const styles = StyleSheet.create({
     left: 0,
     width: 150,
     height: 150,
-    transform: [{ rotate: "90deg" }],
+    transform: [{ rotateX: "180deg" }],
     zIndex: 99,
+    shadowColor: _light,
+    shadowOpacity: 0.3,
+    shadowOffset: { width: 3, height: -3 },
   },
   ///Body game entrance
   item: {
@@ -310,7 +328,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: "25%",
     overflow: "hidden",
     zIndex: 0,
-    backgroundColor:bg_hover
+    backgroundColor: bg_heavy,
   },
   gameFlatBg: {
     height: "100%",

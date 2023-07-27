@@ -10,17 +10,22 @@ const FlatData = [
     {
       id:1,
       name:"comming_soon",
+      title:"Comming Soon",
       src:"#"
     },
 
     {
         id:2,
+        title:"Create poker room",
+        para:"Private poker table for VIP/s",
         name:"create_poker_room",
         src:"#"
        
     },
     {
         id:3,
+        title:"Join the room",
+        para:"Play with your mates by invited room Id",
         name:"join_poker_room",
         src:"#"
     },
@@ -36,15 +41,12 @@ const Home = ({navigation}) => {
         style={styles.item}
         onPress={() => navigation.navigate(item.name)}
       >
-          {item.name === "create_poker_room" ? (
-            <Text style={styles.h2Text}>
-              Create a poker room and invite your friends
-            </Text>
-          ) : (
-            <Text style={styles.h2Text}>
-              Your friends are waiting for you, join the room now
-            </Text>
-          )}
+          <Text style={styles.h2Text}>
+            {item.title + "__" + item.para}
+          </Text>
+          <Text>
+            {item.para}
+          </Text>
       </TouchableOpacity>
     );
     useEffect(()=>{
@@ -160,6 +162,7 @@ const Home = ({navigation}) => {
             <SafeAreaView>
               <FlatList
                 initialNumToRender={2}
+                initialScrollIndex={1}
                 data={FlatData}
                 renderItem={({ item }) => <Item item={item} />}
                 keyExtractor={(item) => item.id}
