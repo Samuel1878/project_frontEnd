@@ -3,7 +3,7 @@ import {NavigationContainer} from "@react-navigation/native";
 import {createStackNavigator} from "@react-navigation/stack";
 import * as SecureStore from "expo-secure-store";
 import {useFonts} from "expo-font";
-import AppLoadingView from "./src/screen/appLoading.js";
+import AppLoading from "./src/screen/appLoading.js";
 import CreatePoker from "./src/screen/create_poker_room.js";
 import JoinPokerRoom from "./src/screen/joinRoom.js";
 import AccountScreen from "./src/screen/account.js";
@@ -15,6 +15,9 @@ import Welcome from "./src/screen/welcome.js";
 import LoginScreen from "./src/screen/login.js";
 export const AuthContext = createContext();
 import * as SplashScreen from "expo-splash-screen";
+import UserProfile from "./src/screen/userProfile.js";
+import Deposit from "./src/screen/deposit.js";
+import Withdraw from "./src/screen/withdraw.js";
 SplashScreen.preventAutoHideAsync();
 
 export default function App() {
@@ -82,7 +85,7 @@ export default function App() {
 
 ///Apploading or loaded management
   if(!fontsLoaded){
-    return<AppLoadingView/>;
+    return<AppLoading/>;
   }
   if(!state.isLoading){
     SplashScreen.hideAsync()
@@ -94,18 +97,13 @@ export default function App() {
           {state.userToken == null ? (
             <>
               <Stack.Screen
+                name="loading"
+                component={AppLoading}
+                options={{ headerShwon: false }}
+              />
+              <Stack.Screen
                 name="account"
                 component={AccountScreen}
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen
-                name="register"
-                component={Register}
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen
-                name="login"
-                component={LoginScreen}
                 options={{ headerShown: false }}
               />
             </>
@@ -121,7 +119,24 @@ export default function App() {
                 component={Home}
                 options={{ headerShown: false }}
               />
-
+              {/*userProfile */}
+              <Stack.Screen
+                name="userProfile"
+                component={UserProfile}
+                options={{ headerShown: false }}
+              />
+              {/* /* Deposit and WithDraw screen */}
+              <Stack.Screen
+                name="deposit"
+                component={Deposit}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="withdraw"
+                component={Withdraw}
+                options={{ headerShown: false }}
+              />
+              {/* Game Screen */}
               <Stack.Screen
                 name="create_poker_room"
                 component={CreatePoker}
@@ -139,6 +154,16 @@ export default function App() {
               />
             </>
           )}
+          <Stack.Screen
+            name="register"
+            component={Register}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="login"
+            component={LoginScreen}
+            options={{ headerShown: false }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </AuthContext.Provider>

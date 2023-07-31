@@ -1,3 +1,4 @@
+import zIndex from "@mui/material/styles/zIndex";
 import {StyleSheet, Platform, Dimensions} from "react-native";
 
 //Color theme logic
@@ -14,7 +15,8 @@ const btn_heavy = "rgb(38,55,73)";
 
 const _main = "rgb(230,187,74)";
 const _second = "rgb(192,162,55)";
-const _light = "rgb(243,230,52)"
+const _light = "rgb(243,230,52)";
+const _lower = "rgb(182,138,60)"
 const grey_1 = "#dad9d8";
 const grey_2 = "#b9b8b6";
 const grey_3 = "#898681";
@@ -51,6 +53,10 @@ const isSmallDevice = (height <= 568);
 
 
 const styles = StyleSheet.create({
+  //app loading
+  appLoading: {
+    flex: 1,
+  },
   //common home
   container: {
     flex: 1,
@@ -83,7 +89,7 @@ const styles = StyleSheet.create({
     shadowColor: btn_heavy,
     shadowOpacity: 0.5,
     shadowRadius: 2,
-    shadowOffset: { width: 10,height:5 },
+    shadowOffset: { width: 10, height: 5 },
   },
   logoCon: {
     position: "relative",
@@ -188,6 +194,7 @@ const styles = StyleSheet.create({
     shadowColor: _light,
     shadowOpacity: 0.9,
     overflow: "hidden",
+    shadowOffset: { width: 3, height: 3 },
   },
   navData: {
     borderRadius: "25%",
@@ -205,9 +212,9 @@ const styles = StyleSheet.create({
   navChip: {
     position: "absolute",
     right: 0,
-    top: 0,
-    width: 35,
-    height: 35,
+    top: -15,
+    width: 55,
+    height: 60,
     resizeMode: "center",
   },
   navUserBtn: {
@@ -216,20 +223,28 @@ const styles = StyleSheet.create({
     borderRadius: "50%",
     justifyContent: "center",
     alignItems: "center",
+    shadowColor: _second,
+    shadowOpacity: 1,
+    shadowRadius: 2,
+    shadowOffset: { width: 5, height: 5 },
   },
   userProfile: {
     borderRadius: 50,
     backgroundColor: bg_heavy,
     width: 65,
     height: 65,
-    borderRadius: 45,
-    shadowColor: bg_hover,
+    shadowColor: _second,
     shadowOpacity: 1,
-    shadowOffset: { width: 5, height: 0 },
+    shadowRadius: 2,
+    shadowOffset: { width: 5, height: 5 },
   },
   settingImage: {
     width: 60,
     height: 60,
+    shadowColor: bg_normal,
+    shadowOpacity: 1,
+    shadowRadius: 2,
+    shadowOffset: { width: 3, height: 3 },
   },
 
   ////Body part
@@ -249,7 +264,6 @@ const styles = StyleSheet.create({
   },
   footerPlayBtn: {
     position: "absolute",
-    backgroundColor: "transparent",
     bottom: 10,
     left: "30%",
     right: "30%",
@@ -324,11 +338,45 @@ const styles = StyleSheet.create({
     flex: 1,
     height: 250,
     marginVertical: 15,
-    borderBottomRightRadius: 200,
-    borderTopLeftRadius: "25%",
+    borderBottomRightRadius: 500,
+    borderTopLeftRadius: 100,
     overflow: "hidden",
     zIndex: 0,
-    backgroundColor: bg_heavy,
+    position: "relative",
+  },
+  itemBorder: {
+    zIndex: 0,
+    height: "100%",
+    padding: 10,
+    position: "relative",
+  },
+  itemBorder1: {
+    position: "relative",
+    height: "100%",
+    padding: 5,
+    borderTopLeftRadius: 100,
+    borderBottomRightRadius: 550,
+  },
+  itemBg: {
+    height: "100%",
+    position: "relative",
+    zIndex: 0,
+  },
+  createItemImg: {
+    width: 270,
+    height: 200,
+    position: "absolute",
+    bottom: "-15%",
+    right: 0,
+  },
+  ////BLurView
+  ClickedView: {
+    height: "100%",
+    zIndex: 99,
+    position: "absolute",
+    width: "100%",
+    top: 0,
+    left: 0,
   },
   gameFlatBg: {
     height: "100%",
@@ -695,7 +743,59 @@ const styles = StyleSheet.create({
     color: app_one,
     marginVertical: 10,
   },
+
+  ///Profile
+  profileContainer: {
+    flex: 1,
+  },
+  //WithDraw
+  Container: {
+    flex: 1,
+    flexDirection: "row",
+    backgroundColor: bg_normal,
+  },
+  leftContainer: {
+    flex: 1,
+    backgroundColor: grey_5,
+    padding: 5,
+    borderRightWidth: 2,
+    borderColor: _second,
+    shadowColor:_main,
+    shadowOpacity:1,
+    shadowOffset:{width:5,height:5},
+    shadowRadius:2
+  },
+  withdrawBtns: {
+    margin: 5,
+    backgroundColor: "transparent",
+    borderTopLeftRadius: "25%",
+    borderBottomRightRadius: "25%",
+    overflow: "hidden",
+    borderColor: _main,
+    borderWidth: 2,
+  },
+  withdrawBtnBg: {
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 12,
+  },
+  withdrawBtnTxt: {
+    fontSize: 19,
+    color: _main,
+  },
+  withdrawExitBtn: {
+    backgroundColor: _main,
+    padding: 10,
+  },
+  withdrawExitBtnTxt: {
+    color: bg_normal,
+  },
+  rightContainer: {
+    flex: 3,
+    backgroundColor: grey_2,
+    alignItems: "center",
+  },
 });
 export default styles;
-export{app_one,app_two,app_three,app_four,app_five,app_six, luxe_one, luxe_two, luxe_three,luxe_four,luxe_five,luxe_six,_error,_warn,_info,_main,_second,_light,bg_normal,bg_heavy,bg_light,bg_hover}
+export{app_one,app_two,app_three,app_four,app_five,app_six, luxe_one, luxe_two, luxe_three,luxe_four,luxe_five,luxe_six,_error,_warn,_info,_main,_lower,_second,_light,bg_normal,bg_heavy,bg_light,bg_hover}
 
