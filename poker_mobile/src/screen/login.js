@@ -9,7 +9,6 @@ const LoginScreen = ({ navigation }) => {
   const [password, setPassword] = useState("");
   const [validNo, setValidNo] = useState(null);
   const [validPwd, setValidPwd] = useState(null);
-  const [user, setUser] = useState([]);
   const REGEX_NO = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{5}$/;
   const REGEX_PWD = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
   const {signIn} = useContext(AuthContext)
@@ -22,14 +21,19 @@ const LoginScreen = ({ navigation }) => {
       },{
         headers:{"Content-Type":"application/json"}
       }).then((res)=>{
-        if(res.data.code===401){
-          setValidNo(false);
-          setValidPwd(false);
-          return
+        switch (res.data.code) {
+          case 401:
+            setValidNo(false);
+            setValidPwd(false);
+            break;
+          case 201:
+            signIn(res.data.token);
+            break;
+          default:
+            console.log("failed login")
+            break;
         }
-        setUser(res.data);
-        signIn(user);
-        
+      
       }).catch((err)=>console.log(err))
     }
   };

@@ -5,17 +5,13 @@ import { LinearGradient } from "expo-linear-gradient";
 import { useContext, useEffect } from "react";
 import {AuthContext} from "../services/AuthUser"
 import axios from "axios";
-//const { token } =  useContext(AuthContext);
 
 
 const UserProfile = ({navigation}) => {
-    const token = 0
-    
-    
-
+    const { userToken } = useContext(AuthContext);
     useEffect(()=>{
         axios
-          .get("http://localhost:4001/api/userData/chip", {params:{token:token}}, {
+          .get("http://localhost:4001/api/userData/chip", {params:{token:userToken}}, {
             headers: { "Content-Type": "application/json" },
           })
           .then((res) => {
