@@ -16,7 +16,10 @@ const btn_heavy = "rgb(38,55,73)";
 const _main = "rgb(230,187,74)";
 const _second = "rgb(192,162,55)";
 const _light = "rgb(243,230,52)";
-const _lower = "rgb(182,138,60)"
+const _lower = "rgb(182,138,60)";
+const goldOld_1 = "rgb(75,45,28)";
+const goldOld_2 = "rgb(163,137,90)";
+const goldOld_3 = "rgb(192,163,112)"
 const grey_1 = "#dad9d8";
 const grey_2 = "#b9b8b6";
 const grey_3 = "#898681";
@@ -744,11 +747,93 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
 
-  ///Profile
+  ///Profile///
   profileContainer: {
     flex: 1,
+    backgroundColor: "transparent",
   },
-  //WithDraw
+  profileBg: {
+    flex: 1,
+    position: "relative",
+  },
+
+  //Exit Button
+  profileExitBtn: {
+    height: 70,
+    width: 120,
+    position: "absolute",
+    top: 10,
+    left: 10,
+    borderTopLeftRadius: "40%",
+    borderBottomRightRadius: "40%",
+    overflow: "hidden",
+  },
+  proBtnBg: {
+    padding: 10,
+    height: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  proBtnInner: {
+    width: "100%",
+    height: "100%",
+    backgroundColor: grey_5,
+    justifyContent: "center",
+    alignItems: "center",
+    borderTopLeftRadius: "25%",
+    borderBottomRightRadius: "25%",
+  },
+  exitIcon: {
+    width: 60,
+    height: 30,
+    shadowColor:bg_heavy,
+    shadowOpacity:.7,
+    shadowRadius:2,
+    shadowOffset:{width:10,height:5}
+  },
+  proTop:{
+    flex:1,
+    marginLeft:150
+  },
+  proMid: {
+    flex:2,
+    flexDirection:"row"
+  },
+  proLeft:{
+    flex:1
+  },
+  avatar:{
+    width:"100%",
+    height:"100%"
+  },
+  promid:{
+    flex:1,
+    alignItems:"flex-start",
+    justifyContent:"center",
+    padding:10
+  },
+  proData:{
+    fontFamily:"italino",
+    fontSize:36,
+    fontWeight:"900",
+    marginVertical:5,
+    color:_main
+  },
+  proRight:{
+    flex:1,
+    alignItems:"center",
+    justifyContent:"center"
+  },
+  vipLogo:{
+    width:250,
+    height:250
+  },
+  proBot:{
+    flex:1
+  },
+  
+
+  //WithDraw///
   Container: {
     flex: 1,
     flexDirection: "row",
@@ -760,10 +845,10 @@ const styles = StyleSheet.create({
     padding: 5,
     borderRightWidth: 2,
     borderColor: _second,
-    shadowColor:_main,
-    shadowOpacity:1,
-    shadowOffset:{width:5,height:5},
-    shadowRadius:2
+    shadowColor: _main,
+    shadowOpacity: 1,
+    shadowOffset: { width: 5, height: 5 },
+    shadowRadius: 2,
   },
   withdrawBtns: {
     margin: 5,
@@ -797,5 +882,5 @@ const styles = StyleSheet.create({
   },
 });
 export default styles;
-export{app_one,app_two,app_three,app_four,app_five,app_six, luxe_one, luxe_two, luxe_three,luxe_four,luxe_five,luxe_six,_error,_warn,_info,_main,_lower,_second,_light,bg_normal,bg_heavy,bg_light,bg_hover}
+export{app_one,app_two,app_three,app_four,app_five,app_six, luxe_one, luxe_two, luxe_three,luxe_four,luxe_five,luxe_six,_error,_warn,_info,_main,_lower,_second,_light,bg_normal,bg_heavy,bg_light,bg_hover,goldOld_1,goldOld_2,goldOld_3}
 

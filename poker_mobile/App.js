@@ -13,11 +13,11 @@ import Home from "./src/screen/home.js"
 import GameRoom from "./src/screen/gameRoom.js";
 import Welcome from "./src/screen/welcome.js";
 import LoginScreen from "./src/screen/login.js";
-export const AuthContext = createContext();
 import * as SplashScreen from "expo-splash-screen";
 import UserProfile from "./src/screen/userProfile.js";
 import Deposit from "./src/screen/deposit.js";
 import Withdraw from "./src/screen/withdraw.js";
+import { AuthContext } from "./src/services/AuthUser.js";
 SplashScreen.preventAutoHideAsync();
 
 export default function App() {
@@ -80,6 +80,7 @@ export default function App() {
       await SecureStore.setItemAsync("userToken", data.token)
     },
     signOut: () => dispatch({ type: "SIGN_OUT" }),
+    token : ()=>state.userToken,
   }));
 
 

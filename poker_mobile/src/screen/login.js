@@ -3,7 +3,7 @@ import styles, { _error, app_four } from "../__Style";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import * as SecureStore from "expo-secure-store";
-import { AuthContext } from "../../App";
+import { AuthContext } from "../services/AuthUser";
 const LoginScreen = ({ navigation }) => {
   const [phoneNo, setPhoneNo] = useState("");
   const [password, setPassword] = useState("");
@@ -104,7 +104,7 @@ const LoginScreen = ({ navigation }) => {
                 style={styles.resetBtn}
                 color={app_four}
                 title="Reset password"
-                onPress={() => navigation.navigate("")}
+                onPress={() => navigation.navigate("account")}
               />
             </View>
           </View>

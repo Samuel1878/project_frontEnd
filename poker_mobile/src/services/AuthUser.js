@@ -1,11 +1,3 @@
-import { createContext, useEffect, useMemo } from "react"
+import { createContext } from "react"
+export const AuthContext = createContext();
 
-const Auth = ({children}) => {
-    
-    return(
-        <AuthContext.Provider value={authContext}>
-            {children}
-        </AuthContext.Provider>
-    )
-}
-export default Auth;
