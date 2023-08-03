@@ -5,7 +5,6 @@ import { useCallback, useEffect, useMemo, useState } from "react"
 import { BlurView } from "expo-blur"
 const Item = ({item,itemSelection,navigation,intensity,borderCol,clicked}) => {
     const [xEx, setXEx] = useState(0);
-   
     const onPressHandler = () =>{
         itemSelection();
         if(clicked) {
@@ -29,9 +28,13 @@ const Item = ({item,itemSelection,navigation,intensity,borderCol,clicked}) => {
             <ImageBackground
               resizeMode="cover"
               style={styles.itemBg}
-              source={require("../../assets/create.jpg")}
+              source={item.src}
             >
-              <BlurView intensity={intensity} tint="dark" style={styles.ClickedView}>
+              <BlurView
+                intensity={intensity}
+                tint="dark"
+                style={styles.ClickedView}
+              >
                 <Image
                   source={require("../../assets/createItem.png")}
                   style={styles.createItemImg}

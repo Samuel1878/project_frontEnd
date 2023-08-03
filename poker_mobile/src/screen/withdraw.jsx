@@ -1,7 +1,7 @@
 import WithDrawRight from "../components/withdrawRR.js";
-import styles from "../__Style";
+import styles from "../__Style.js";
 import { ImageBackground, Text, TouchableOpacity, View } from "react-native";
-import { btnList } from "../libs/btnList";
+import { btnList } from "../libs/btnList.js";
 import { useEffect, useState } from "react";
 
 

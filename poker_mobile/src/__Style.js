@@ -429,100 +429,29 @@ const styles = StyleSheet.create({
   },
   ////game table
   table: {
-    flex: 8,
-    zIndex: 0,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  tableArea: {
     flex: 1,
-    backgroundColor: bg_hover,
-    zIndex: 1,
-  },
-  seatContainer: {
-    width: 100,
-    height: 100,
-    backgroundColor: "white",
-    borderRadius: "50%",
-    position: "absolute",
-    bottom: 10,
-    left: "35%",
-    zIndex: 1,
-  },
-  playerBoard: {
-    width: 100,
-    height: 60,
-    borderRadius: 10,
-    position: "relative",
-    backgroundColor: "white",
-    right: "-80%",
-    top: 20,
     zIndex: 0,
+    position: "relative",
   },
-  seatContainer1: {
-    width: 100,
-    height: 100,
-    backgroundColor: app_five,
-    borderRadius: "50%",
+  userTable: {
     position: "absolute",
-    bottom: "10%",
-    right: 140,
-    zIndex: 1,
-  },
-  seatContainer2: {
-    width: 100,
+    bottom: 0,
     height: 100,
-    backgroundColor: "white",
-    borderRadius: "50%",
-    position: "absolute",
-    top: "30%",
-    right: 90,
-    zIndex: 1,
+    left: 0,
+    right: 0,
+    padding: 10,
+    width: "100%",
+    zIndex:1,
   },
-  seatContainer3: {
-    width: 100,
-    height: 100,
-    backgroundColor: "white",
-    borderRadius: "50%",
-    position: "absolute",
-    top: 20,
-    right: 250,
-    zIndex: 1,
+  userTableBg: {
+    flex: 1,
   },
-  seatContainer4: {
-    width: 100,
-    height: 100,
-    backgroundColor: "white",
-    borderRadius: "50%",
-    position: "absolute",
-    top: 20,
-    left: 200,
-    zIndex: 1,
-  },
-  seatContainer5: {
-    width: 100,
-    height: 100,
-    backgroundColor: "white",
-    borderRadius: "50%",
-    position: "absolute",
-    top: "30%",
-    left: 20,
-    zIndex: 1,
-  },
-  seatContainer6: {
-    width: 100,
-    height: 100,
-    backgroundColor: "white",
-    borderRadius: "50%",
-    position: "absolute",
-    bottom: "15%",
-    left: 50,
-    zIndex: 1,
-  },
+
   ///account
   accountContainer: {
     top: "10%",
     height: "80%",
+
     alignItems: "center",
     marginVertical: "auto",
     justifyContent: "center",
@@ -801,19 +730,19 @@ const styles = StyleSheet.create({
   },
   proLeft: {
     flex: 1,
-    padding:20,
+    padding: 20,
   },
   avatar: {
     width: "100%",
     height: "100%",
-    backgroundColor:_main,
-    backfaceVisibility:"visible",
-    justifyContent:"center",
-    alignItems:"center"
+    backgroundColor: _main,
+    backfaceVisibility: "visible",
+    justifyContent: "center",
+    alignItems: "center",
   },
-  defaultUserProfile:{
-    width:"100%",
-    height:"100%"
+  defaultUserProfile: {
+    width: "100%",
+    height: "100%",
   },
   promid: {
     flex: 1,
@@ -852,18 +781,17 @@ const styles = StyleSheet.create({
   },
   signOutBtnFrame: {
     flex: 1,
-    justifyContent:"center",
-    alignItems:"center"
+    justifyContent: "center",
+    alignItems: "center",
   },
   signOutTxt: {
     fontSize: 21,
-    fontWeight:"bold",
+    fontWeight: "bold",
     fontFamily: "Philosopher",
-    color:_main,
-    textShadowColor:_second,
-    textShadowRadius:2,
-    textShadowOffset:{width:2, height:2}
-
+    color: _main,
+    textShadowColor: _second,
+    textShadowRadius: 2,
+    textShadowOffset: { width: 2, height: 2 },
   },
   //WithDraw///
   Container: {

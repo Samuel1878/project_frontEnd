@@ -5,8 +5,8 @@ import { BlurView } from 'expo-blur';
 import { Video, ResizeMode } from "expo-av";
 import {LinearGradient} from "expo-linear-gradient"
 import Item from "../components/rooms";
-// const createBg = require("../../assets/createBg.jpg");
-// const joinBg = require("../../assets/joinBg.jpg");
+const createBg = require("../../assets/createBg.jpg");
+const joinBg = require("../../assets/pokerRooms.jpg");
 const FlatData = [
     {
       id:1,
@@ -20,7 +20,7 @@ const FlatData = [
         title:"Create poker room",
         para:"Private poker table for VIP/s",
         name:"create_poker_room",
-        src:"#"
+        src:createBg,
        
     },
     {
@@ -28,7 +28,7 @@ const FlatData = [
         title:"Join the room",
         para:"Play with your mates by invited room Id",
         name:"join_poker_room",
-        src:"#"
+        src:joinBg
     },
    
 ]
