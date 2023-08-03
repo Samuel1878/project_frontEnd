@@ -2,20 +2,30 @@ import { Image, Text,ImageBackground, TouchableOpacity, TouchableWithoutFeedback
 import styles, { _lower, _main, _second } from "../__Style";
 import { BlurView } from "expo-blur";
 import { LinearGradient } from "expo-linear-gradient";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect,useState } from "react";
 import {AuthContext} from "../services/AuthUser"
 import axios from "axios";
+import { requestPermissionsAsync } from "expo-av/build/Audio";
 
 
 const UserProfile = ({navigation}) => {
-    const { userToken } = useContext(AuthContext);
+    const [name,setName] = useState("..........");
+    const [phone, setPhone ]= useState("09 1234 ...");
+    const [userSrc, setUserSrc] = useState(null);
+    const [chip, setChip] = useState("1000")
+    const { userToken,signOut } = useContext(AuthContext);
     useEffect(()=>{
         axios
-          .get("http://localhost:4001/api/userData/chip", {params:{token:userToken}}, {
+          .get("http://localhost:4001/api/userData/chip", {
+            params:{token:userToken,reqData:"allData"},
             headers: { "Content-Type": "application/json" },
           })
           .then((res) => {
-            console.log(res.data.chips);
+            console.log(res.data);
+            setName(res.data.data.name);
+            setPhone(res.data.data.phone);
+            setUserSrc(res.data.data.proSrc);
+            setChip(res.data.data.chips)
           })
           .catch((err) => console.warn(err.message));
     },[])
@@ -26,7 +36,6 @@ const UserProfile = ({navigation}) => {
           resizeMode="cover"
           source={require("../../assets/profileBg.png")}
         >
-     
           <TouchableOpacity
             style={styles.profileExitBtn}
             onPress={() => navigation.navigate("home")}
@@ -51,13 +60,27 @@ const UserProfile = ({navigation}) => {
                 resizeMode="cover"
                 style={styles.avatar}
                 source={require("../../assets/avatar.png")}
-              ></ImageBackground>
+              >
+                {userSrc == null ? (
+                  <Image
+                    resizeMode="cover"
+                    style={styles.defaultUserProfile}
+                    source={require("../../assets/user.png")}
+                  />
+                ) : (
+                  <Image
+                    resizeMode="cover"
+                    style={styles.defaultUserProfile}
+                    source={{uri:userSrc}}
+                  />
+                )}
+              </ImageBackground>
             </View>
             <View style={styles.promid}>
-              <Text style={styles.proData}>UserType: platinum user</Text>
-              <Text style={styles.proData}>Name: lalalalalalalala</Text>
-              <Text style={styles.proData}>Phone: 234234234234</Text>
-              <Text style={styles.proData}>Chip: 10000</Text>
+              <Text style={styles.proData}>UserType: VIP</Text>
+              <Text style={styles.proData}>Name: {name}</Text>
+              <Text style={styles.proData}>Phone: {phone}</Text>
+              <Text style={styles.proData}>Chip: {chip}</Text>
             </View>
             <View style={styles.proRight}>
               <Image
@@ -66,7 +89,22 @@ const UserProfile = ({navigation}) => {
               />
             </View>
           </BlurView>
-          <View style={styles.proBot}></View>
+          <View style={styles.proBot}>
+            <View style={styles.proBotLeft}></View>
+            <TouchableOpacity
+              onPress={() => signOut()}
+              style={styles.signOutBtn}
+            >
+              <ImageBackground
+                style={styles.signOutBtnFrame}
+                resizeMode="cover"
+                source={require("../../assets/logout.png")}
+              >
+                <Text style={styles.signOutTxt}>Sign Out</Text>
+              </ImageBackground>
+            </TouchableOpacity>
+            <View style={{ flex: 1 }}></View>
+          </View>
         </ImageBackground>
       </TouchableWithoutFeedback>
     );

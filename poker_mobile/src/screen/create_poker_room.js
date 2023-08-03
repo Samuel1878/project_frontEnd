@@ -50,34 +50,6 @@ const CreatePoker = ({navigation}) => {
                     color="#841584"
                     accessibilityLabel="create table"
                     />
-                <NativeBaseProvider>
-                    <Box maxW="200">
-                        <Select 
-                            selectedValue={service} 
-                            minWidth="100"
-                            accessibilityLabel="Choose Table Class" 
-                            placeholder="Choose Mini/Max Price" 
-                            _selectedItem={{bg:"teal.600",endIcon: <CheckIcon size="2" />}}
-                            mt={1} 
-                            onValueChange={itemValue => setService(itemValue)}>
-                                <Select.Item label="20/2000" value="mini" />
-                                <Select.Item label="200/20000" value="lowerClass" />
-                                <Select.Item label="500/50000" value="middleClass" />
-                                <Select.Item label="1000/10000" value="superClass" />
-                                <Select.Item label="2000/400000" value="ultraClass" />
-                        </Select>
-                    </Box>
-                    <HStack space={6}>
-                        <Checkbox 
-                            shadow={2} 
-                            value="test"
-                            defaultIsChecked
-                            colorScheme="info">
-                             I accept the terms & conditions
-                        </Checkbox>
-                    </HStack>
-
-                </NativeBaseProvider>
                 
             </View>
             <ExitBtn value={navigation}/>

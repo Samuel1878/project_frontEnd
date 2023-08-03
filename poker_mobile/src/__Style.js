@@ -786,53 +786,85 @@ const styles = StyleSheet.create({
   exitIcon: {
     width: 60,
     height: 30,
-    shadowColor:bg_heavy,
-    shadowOpacity:.7,
-    shadowRadius:2,
-    shadowOffset:{width:10,height:5}
+    shadowColor: bg_heavy,
+    shadowOpacity: 0.7,
+    shadowRadius: 2,
+    shadowOffset: { width: 10, height: 5 },
   },
-  proTop:{
-    flex:1,
-    marginLeft:150
+  proTop: {
+    flex: 1,
+    marginLeft: 150,
   },
   proMid: {
-    flex:2,
-    flexDirection:"row"
+    flex: 2,
+    flexDirection: "row",
   },
-  proLeft:{
-    flex:1
+  proLeft: {
+    flex: 1,
+    padding:20,
   },
-  avatar:{
+  avatar: {
+    width: "100%",
+    height: "100%",
+    backgroundColor:_main,
+    backfaceVisibility:"visible",
+    justifyContent:"center",
+    alignItems:"center"
+  },
+  defaultUserProfile:{
     width:"100%",
     height:"100%"
   },
-  promid:{
-    flex:1,
-    alignItems:"flex-start",
+  promid: {
+    flex: 1,
+    alignItems: "flex-start",
+    justifyContent: "center",
+    padding: 10,
+  },
+  proData: {
+    fontFamily: "italino",
+    fontSize: 36,
+    fontWeight: "900",
+    marginVertical: 5,
+    color: _main,
+  },
+  proRight: {
+    flex: 1.2,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  vipLogo: {
+    width: 300,
+    height: 250,
+  },
+  proBot: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  proBotLeft: {
+    flex: 1,
+  },
+  signOutBtn: {
+    width: 210,
+    height: 75,
+  },
+  signOutBtnFrame: {
+    flex: 1,
     justifyContent:"center",
-    padding:10
+    alignItems:"center"
   },
-  proData:{
-    fontFamily:"italino",
-    fontSize:36,
-    fontWeight:"900",
-    marginVertical:5,
-    color:_main
-  },
-  proRight:{
-    flex:1,
-    alignItems:"center",
-    justifyContent:"center"
-  },
-  vipLogo:{
-    width:250,
-    height:250
-  },
-  proBot:{
-    flex:1
-  },
-  
+  signOutTxt: {
+    fontSize: 21,
+    fontWeight:"bold",
+    fontFamily: "Philosopher",
+    color:_main,
+    textShadowColor:_second,
+    textShadowRadius:2,
+    textShadowOffset:{width:2, height:2}
 
+  },
   //WithDraw///
   Container: {
     flex: 1,
