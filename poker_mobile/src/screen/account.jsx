@@ -8,29 +8,14 @@ import styles from "../__Style";
 import { useEffect, useRef } from "react";
 
 export default AccountScreen = ({navigation}) => {
-    const video = useRef(null);
-    useEffect(()=>{
-        video.current.playAsync();
-    },[])
+  
     return (
-      <View style={{flex:1}}>
-        <Video
-            ref={video}
-            source={require("../../assets/accountBg.mp4")}
-            resizeMode={ResizeMode.COVER}
-            isLooping
-            useNativeControls={false}
-            style={styles.accountBg}
-        />
-        <BlurView intensity={50} style={styles.accountContainer}>
-          <View style={styles.accountBox}>
+      <ImageBackground
+         style={styles.accountBg}
+         resizeMode="cover"
+         source={require("../../assets/accBg.jpg")}>
+        <BlurView intensity={5} style={styles.accountContainer} tint="dark">
               <View style={styles.accountInnerBox}>
-                {/* <View>
-                   <TouchableOpacity
-                    onPress={()=>()}>
-                    <Image style={styles.exitIcon} source={require("../../assets/exit.png")}/>
-                  </TouchableOpacity> 
-                </View> */}
                <TouchableOpacity 
                 style={styles.accBtn}
                 onPress={()=>navigation.navigate("register")}>
@@ -43,8 +28,7 @@ export default AccountScreen = ({navigation}) => {
                 <Text  style={styles.accBtnTxt}>Login</Text>
                </TouchableOpacity>
               </View>
-          </View>
         </BlurView>
-    </View>
+    </ImageBackground>
     );
 }

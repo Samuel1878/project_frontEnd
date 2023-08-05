@@ -59,7 +59,10 @@ export default function AuthProvider ({children}) {
          dispatch({ type: "SIGN_IN", token: userToken });
          await SecureStore.setItemAsync("userToken", userToken);
        },
-       signOut: () => dispatch({ type: "SIGN_OUT" }),
+       signOut: () => {
+        dispatch({ type: "SIGN_OUT" }); 
+        SecureStore.deleteItemAsync("userToken");
+        },
        isLoading: state.isLoading,
        userToken: state.userToken,
      }));

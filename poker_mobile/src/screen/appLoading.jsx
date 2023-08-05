@@ -1,17 +1,19 @@
-import { Video } from "expo-av"
+import { Video,ResizeMode } from "expo-av"
 import {Text} from "react-native"
 import styles from "../__Style"
 import { useEffect, useRef } from "react"
-export default AppLoading = ({navigation}) =>{
+export default function AppLoading ({navigation}){
     const vRef = useRef(null);
-setTimeout(()=>{
-    navigation?.navigate("account")
-},2500)
+
 useEffect(()=>{
-    vRef.current.playAsync()
+    vRef.current.playAsync();
+    setTimeout(()=>{
+    navigation?.navigate("account" || "welcome")
+},4000)
 },[])
     return (
       <Video
+        resizeMode={ResizeMode.COVER}
         useNativeControls={false}
         ref={vRef}
         style={styles.appLoading}

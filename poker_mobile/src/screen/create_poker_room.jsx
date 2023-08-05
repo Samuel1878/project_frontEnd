@@ -1,14 +1,15 @@
-import { View, Button, TextInput} from "react-native";
+import { View, Button, TextInput, TouchableOpacity,Text} from "react-native";
 import * as Clipboard from "expo-clipboard"
 import styles from "../__Style"
 import { useEffect, useState } from "react";
 import ExitBtn from "../components/exitBtn";
-import { Select,Box,CheckIcon,NativeBaseProvider,HStack,Checkbox } from "native-base";
+import { ImageBackground } from "react-native";
 const randId = () => {
     return Math.random().toString(36).substr(2);
   };
 
 const CreatePoker = ({navigation}) => {
+    const [copied, setCopied] = useState(false)
     const [service, setService] = useState("");
     const [tableId, setTableId] = useState("");
     useEffect(()=>{
@@ -24,36 +25,59 @@ const CreatePoker = ({navigation}) => {
     }
     const copyId = () => {
         Clipboard.setStringAsync(tableId);
-        console.info(tableId)
+        console.info(tableId);
+        setCopied(true);
+        setTimeout(()=>{
+            setCopied(false)
+        },1500)
     }
     
     return (
-       <View style={styles.createRoom}>
+       <ImageBackground 
+        resizeMode="cover"
+        source={require("../../assets/createRoomBg.jpg")}
+        style={styles.createRoom}>
             <View>
                 <View style={{flexDirection:"row"}}>
                     <TextInput
+                        style={styles.joinRoomId}
                         value={tableId}
                         editable={false}
                         onPressIn={copyId}/>
                     <Button
-                        title="Copy"
+                        title={copied?"Copied":"Copy"}
                         onPress={copyId}
                         />
 
                 </View>
-                <Button
-                    title="Invite Friends"/>
+                <TouchableOpacity
+                    style={styles.createBtn}
+                    onPress={()=>console.log("shared")}>
+                        <ImageBackground
+                            source={require("../../assets/createTableBtn.png")}
+                            style={styles.createTableBtn}>
+                            <Text style={styles.createBtnTxt}>
+                                Share with Friends
+                            </Text>
+                        </ImageBackground>
+                </TouchableOpacity>
 
-                <Button
-                    onPress={createTable}
-                    title="Create Table"
-                    color="#841584"
-                    accessibilityLabel="create table"
-                    />
+                <TouchableOpacity
+                    style={styles.createBtn}
+                    onPress={createTable}>
+                        <ImageBackground
+                            source={require("../../assets/createTableBtn.png")}
+                            style={styles.createTableBtn}>
+                            <Text style={styles.createBtnTxt}>
+                                Create Table
+                            </Text>
+                        </ImageBackground>
+                </TouchableOpacity>
+                
                 
             </View>
             <ExitBtn value={navigation}/>
-       </View>
+       </ImageBackground>
     )
 }
 export default CreatePoker;

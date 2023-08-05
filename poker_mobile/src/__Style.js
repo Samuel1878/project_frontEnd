@@ -58,7 +58,8 @@ const isSmallDevice = (height <= 568);
 const styles = StyleSheet.create({
   //app loading
   appLoading: {
-    flex: 1,
+    width: "100%",
+    height: "100%",
   },
   //common home
   container: {
@@ -390,6 +391,10 @@ const styles = StyleSheet.create({
   joinRoomContainer: {
     backgroundColor: "transparent",
     flex: 1,
+  },
+  joinRoomBg: {
+    width: "100%",
+    height: "100%",
     justifyContent: "center",
     alignItems: "center",
   },
@@ -399,11 +404,15 @@ const styles = StyleSheet.create({
     width: 400,
     backgroundColor: "transparent",
     paddingVertical: 5,
-    borderColor: app_two,
+    borderColor: _main,
     borderWidth: 3,
-    shadowColor: app_two,
+    shadowColor: _second,
     shadowOpacity: 0.5,
-    color: textColor,
+    color: _main,
+    shadowRadius: 2,
+    backgroundColor: grey_5,
+    backfaceVisibility: "visible",
+    shadowOffset: { width: 2, height: 2 },
   },
   //Create Room or Table
   createRoom: {
@@ -411,21 +420,49 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
   },
+
   //exit Button
   exitBtn: {
     position: "absolute",
     bottom: 50,
     right: 50,
-    width: 50,
-    height: 50,
+    width: 70,
+    height: 70,
     padding: 10,
     margin: 10,
-    borderRadius: "25%",
-    borderColor: app_two,
+    borderRadius: "45%",
+    borderColor: _main,
     borderWidth: 4,
     zIndex: 0,
     alignItems: "center",
     justifyContent: "center",
+  },
+  exitBtnTxt: {
+    fontFamily: "Philosopher",
+    fontSize: 20,
+    color: _second,
+  },
+  ////
+  joinRoomId: {
+    color: _main,
+    fontSize: 18,
+    letterSpacing: 2,
+  },
+  createBtn: {
+    width: 200,
+    height: 50,
+    left: -20,
+  },
+  createTableBtn: {
+    width: "100%",
+    height: "100%",
+    overflow: "hidden",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  createBtnTxt: {
+    color: _main,
+    fontSize: 18,
   },
   ////game table
   table: {
@@ -440,67 +477,68 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     padding: 10,
-    width: "100%",
-    zIndex:1,
+    zIndex: 1,
   },
   userTableBg: {
     flex: 1,
   },
 
   ///account
+  accountBg: {
+    width: "100%",
+    height: "100%",
+  },
   accountContainer: {
-    top: "10%",
-    height: "80%",
-
+    position:"absolute",
+    left:0,right:0,
+    bottom:"5%",
+    height: 100,
     alignItems: "center",
     marginVertical: "auto",
     justifyContent: "center",
   },
-  accountBg: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-  },
-  accountBox: {
-    backgroundColor: bg_light,
-    flex: 0.8,
-    width: 400,
-    height: 300,
-    borderRadius: 20,
-    position: "relative",
-    opacity: 0.7,
-    shadowColor: bg_light,
-    shadowOpacity: 0.6,
-    shadowRadius: 20,
-    shadowOffset: { width: 5, height: 5 },
-  },
+  // accountBox: {
+  //   backgroundColor: bg_light,
+  //   flex: 0.8,
+  //   width: 400,
+  //   height: 300,
+  //   borderRadius: 20,
+  //   position: "relative",
+  //   opacity: 0.7,
+  //   shadowColor: bg_light,
+  //   shadowOpacity: 0.6,
+  //   shadowRadius: 20,
+  //   shadowOffset: { width: 5, height: 5 },
+  // },
   accountInnerBox: {
-    backgroundColor: bg_normal,
-    marginVertical: 10,
-    marginHorizontal: 10,
     justifyContent: "center",
     alignItems: "center",
-    display: "flex",
+    flexDirection:"row",
     flex: 1,
-    borderRadius: 15,
   },
   accBtn: {
     width: 200,
-    backgroundColor: bg_light,
-    padding: 15,
-    margin: 25,
+    backgroundColor: bg_heavy,
+    padding:15,
+    marginTop: 25,
+    marginHorizontal:100,
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: "25%",
-    shadowColor: bg_light,
-    shadowOpacity: 0.5,
+    borderRadius: "50%",
+    shadowColor: _light,
+    shadowRadius:3,
+    shadowOpacity: 0.3,
+    shadowOffset:{width:3,height:5},
+    borderColor:_main,
+    borderWidth:3,
+
+    
   },
   accBtnTxt: {
+    fontFamily:"Philosopher",
     fontSize: 19,
-    color: bg_heavy,
-    fontWeight: "bold",
+    color:_second,
+    fontWeight: "700",
   },
   ///register
   regContainer: {

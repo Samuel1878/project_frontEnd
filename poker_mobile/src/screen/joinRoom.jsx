@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { TextInput,SafeAreaView,KeyboardAvoidingView } from "react-native";
-import styles from "../__Style";
+import { TextInput,SafeAreaView,KeyboardAvoidingView, ImageBackground } from "react-native";
+import styles, { _lower } from "../__Style";
 import ExitBtn from "../components/exitBtn";
 
 export default JoinPokerRoom = ({navigation}) => {
@@ -12,15 +12,22 @@ export default JoinPokerRoom = ({navigation}) => {
         <KeyboardAvoidingView 
             behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
             style={styles.joinRoomContainer}>
-            <TextInput
+            <ImageBackground
+                resizeMode="cover"
+                source={require("../../assets/joinRoomBg.jpg")}
+                style={styles.joinRoomBg}>
+                <TextInput
                 style={styles.joinRoomInput}
                 onChangeText={(e)=>setRoomId(e)}
                 value={roomId}
+                placeholderTextColor={_lower}
                 placeholder="Table ID"
                 onSubmitEditing={onSubmit}
                 blurOnSubmit={true}
                 dataDetectorTypes="all"/>
             <ExitBtn value={navigation}/>
+
+            </ImageBackground>
         </KeyboardAvoidingView>
     )
 }

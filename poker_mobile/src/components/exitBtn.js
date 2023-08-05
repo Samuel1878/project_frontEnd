@@ -5,7 +5,7 @@ export default exitBtn = ({value}) => {
             <TouchableOpacity
                 onPress={()=>value.navigate("home")}
                 style={styles.exitBtn}>
-                <Text>
+                <Text style={styles.exitBtnTxt}>
                     Exit
                 </Text>
             </TouchableOpacity>

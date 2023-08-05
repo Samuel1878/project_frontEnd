@@ -26,10 +26,7 @@ const Navigations = () => {
     italino: require("./assets/fonts/Italianno-Regular.ttf"),
   });
   ///Apploading or loaded management
-  if (!fontsLoaded) {
-    return <AppLoading />;
-  }
-  if(!isLoading){
+  if(!isLoading || !fontsLoaded){
     SplashScreen.hideAsync()
   }
   return (
@@ -40,7 +37,7 @@ const Navigations = () => {
               <Stack.Screen
                 name="loading"
                 component={AppLoading}
-                options={{ headerShwon: false }}
+                options={{ headerShown: false }}
               />
               <Stack.Screen
                 name="account"

@@ -28,7 +28,7 @@ const Item = ({item,itemSelection,navigation,intensity,borderCol,clicked}) => {
             <ImageBackground
               resizeMode="cover"
               style={styles.itemBg}
-              source={item.src}
+              source={item.src()}
             >
               <BlurView
                 intensity={intensity}
@@ -36,8 +36,8 @@ const Item = ({item,itemSelection,navigation,intensity,borderCol,clicked}) => {
                 style={styles.ClickedView}
               >
                 <Image
-                  source={require("../../assets/createItem.png")}
-                  style={styles.createItemImg}
+                  source={item.png()}
+                  style={[styles.createItemImg,item.name==="join_poker_room"?{width:200,height:200,left:100}:null]}
                 />
               </BlurView>
             </ImageBackground>
