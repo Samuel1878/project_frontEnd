@@ -3,7 +3,7 @@ import styles, { _error, app_four } from "../__Style";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import * as SecureStore from "expo-secure-store";
-import { AuthContext } from "../services/AuthUser";
+import { AuthContext } from "../services/auth/AuthUser";
 const LoginScreen = ({ navigation }) => {
   const [phoneNo, setPhoneNo] = useState("");
   const [password, setPassword] = useState("");

@@ -15,15 +15,17 @@ export default GameRoom = () => {
           resizeMode="cover"
           style={styles.table}
         >
-          <LinearGradient 
-            colors={[_main,_light,_lower]}
-            style={styles.userTable}>
+          <View style={{flex:1, backgroundColor:"red"}}>
+
+          </View>
+          <View style={{flex:3}}>
+
+          </View>
             <ImageBackground
               resizeMode="cover"
               source={require("../../assets/playBtn.jpg")}
               style={styles.userTableBg}
             ></ImageBackground>
-          </LinearGradient>
         </ImageBackground>
       </View>
     );

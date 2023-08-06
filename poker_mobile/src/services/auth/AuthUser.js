@@ -1,6 +1,6 @@
 import { createContext ,useReducer,useEffect,useMemo} from "react"
 import * as SecureStore from "expo-secure-store";
-export const AuthContext = createContext(null);
+import AuthContext from "./authContext";
 const initialValue = {
          isLoading: true,
          isSignout: false,

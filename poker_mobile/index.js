@@ -7,7 +7,6 @@ import CreatePoker from "./src/screen/create_poker_room.jsx";
 import JoinPokerRoom from "./src/screen/joinRoom.jsx";
 import AccountScreen from "./src/screen/account.jsx";
 import Register from "./src/screen/register.jsx";
-const Stack = createStackNavigator();
 import Home from "./src/screen/home.jsx";
 import GameRoom from "./src/screen/gameRoom.jsx";
 import Welcome from "./src/screen/welcome.jsx";
@@ -16,11 +15,12 @@ import * as SplashScreen from "expo-splash-screen";
 import UserProfile from "./src/screen/userProfile.jsx";
 import Deposit from "./src/screen/deposit.jsx";
 import Withdraw from "./src/screen/withdraw.jsx";
-import  { AuthContext } from "./src/services/AuthUser.js";
+import  AuthContext  from "./src/services/auth/authContext.js";
 SplashScreen.preventAutoHideAsync();
+const Stack = createStackNavigator();
 const Navigations = () => {
   const { userToken, isLoading } = useContext(AuthContext);
-  console.log(userToken)
+  console.log(userToken);
   let [fontsLoaded] = useFonts({
     Philosopher: require("./assets/fonts/Philosopher-Regular.ttf"),
     italino: require("./assets/fonts/Italianno-Regular.ttf"),

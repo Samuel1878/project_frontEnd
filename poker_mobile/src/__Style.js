@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
   videoHome: {
     position: "absolute",
     zIndex: -1,
-    top: 0,
+    top:0,
     left: 0,
     right: 0,
     bottom: 0,
@@ -387,40 +387,6 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: app_two,
   },
-  ///JoinRoom
-  joinRoomContainer: {
-    backgroundColor: "transparent",
-    flex: 1,
-  },
-  joinRoomBg: {
-    width: "100%",
-    height: "100%",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  joinRoomInput: {
-    paddingHorizontal: 10,
-    borderRadius: 30,
-    width: 400,
-    backgroundColor: "transparent",
-    paddingVertical: 5,
-    borderColor: _main,
-    borderWidth: 3,
-    shadowColor: _second,
-    shadowOpacity: 0.5,
-    color: _main,
-    shadowRadius: 2,
-    backgroundColor: grey_5,
-    backfaceVisibility: "visible",
-    shadowOffset: { width: 2, height: 2 },
-  },
-  //Create Room or Table
-  createRoom: {
-    justifyContent: "center",
-    flex: 1,
-    alignItems: "center",
-  },
-
   //exit Button
   exitBtn: {
     position: "absolute",
@@ -443,15 +409,66 @@ const styles = StyleSheet.create({
     color: _second,
   },
   ////
+  ///JoinRoom
+  joinRoomContainer: {
+    backgroundColor: "transparent",
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  joinRoomBg: {
+    width: "100%",
+    height: "100%",
+  },
+  joinRoomInput: {
+    paddingHorizontal: 10,
+    borderRadius: 30,
+    width: 400,
+    backgroundColor: "transparent",
+    paddingVertical: 5,
+    borderColor: _main,
+    borderWidth: 3,
+    shadowColor: _second,
+    shadowOpacity: 0.5,
+    color: _main,
+    shadowRadius: 2,
+    backfaceVisibility: "visible",
+    shadowOffset: { width: 2, height: 2 },
+  },
+  submitBtn: {
+    marginTop: 20,
+    width: 250,
+    height: 50,
+  },
+  submitBtnBg: {
+    padding: 10,
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  JsubmitBtnTxt: {
+    textAlign: "center",
+    color: _main,
+    fontSize: 18,
+    fontFamily: "Philosopher",
+  },
+  //Create Room or Table
+  createRoom: {
+    justifyContent: "center",
+    flex: 1,
+    alignItems: "center",
+  },
+
   joinRoomId: {
     color: _main,
     fontSize: 18,
     letterSpacing: 2,
+
   },
   createBtn: {
     width: 200,
     height: 50,
-    left: -20,
+    left: 0,
   },
   createTableBtn: {
     width: "100%",
@@ -464,20 +481,21 @@ const styles = StyleSheet.create({
     color: _main,
     fontSize: 18,
   },
-  ////game table
+  ////game ROOM
   table: {
     flex: 1,
-    zIndex: 0,
+    zIndex: -1,
     position: "relative",
   },
   userTable: {
     position: "absolute",
     bottom: 0,
-    height: 100,
+    flex:1,
+    width:"100%",
     left: 0,
     right: 0,
     padding: 10,
-    zIndex: 1,
+    zIndex: 0,
   },
   userTableBg: {
     flex: 1,
@@ -489,9 +507,10 @@ const styles = StyleSheet.create({
     height: "100%",
   },
   accountContainer: {
-    position:"absolute",
-    left:0,right:0,
-    bottom:"5%",
+    position: "absolute",
+    left: 0,
+    right: 0,
+    bottom: "5%",
     height: 100,
     alignItems: "center",
     marginVertical: "auto",
@@ -513,31 +532,29 @@ const styles = StyleSheet.create({
   accountInnerBox: {
     justifyContent: "center",
     alignItems: "center",
-    flexDirection:"row",
+    flexDirection: "row",
     flex: 1,
   },
   accBtn: {
     width: 200,
     backgroundColor: bg_heavy,
-    padding:15,
+    padding: 15,
     marginTop: 25,
-    marginHorizontal:100,
+    marginHorizontal: 100,
     alignItems: "center",
     justifyContent: "center",
     borderRadius: "50%",
     shadowColor: _light,
-    shadowRadius:3,
+    shadowRadius: 3,
     shadowOpacity: 0.3,
-    shadowOffset:{width:3,height:5},
-    borderColor:_main,
-    borderWidth:3,
-
-    
+    shadowOffset: { width: 3, height: 5 },
+    borderColor: _main,
+    borderWidth: 3,
   },
   accBtnTxt: {
-    fontFamily:"Philosopher",
+    fontFamily: "Philosopher",
     fontSize: 19,
-    color:_second,
+    color: _second,
     fontWeight: "700",
   },
   ///register

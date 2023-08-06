@@ -3,7 +3,7 @@ import styles, { _lower, _main, _second } from "../__Style";
 import { BlurView } from "expo-blur";
 import { LinearGradient } from "expo-linear-gradient";
 import { useContext, useEffect,useState } from "react";
-import {AuthContext} from "../services/AuthUser"
+import {AuthContext} from "../services/auth/AuthUser"
 import axios from "axios";
 import { requestPermissionsAsync } from "expo-av/build/Audio";
 

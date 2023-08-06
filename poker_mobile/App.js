@@ -1,11 +1,20 @@
 import Navigations from "./index"
-import AuthProvider from "./src/services/AuthUser"
+import AuthProvider from "./src/services/auth/AuthUser"
+import GameState from "./src/services/game/gameState";
+import GlobalState from "./src/services/global/globalState"
+import SocketProvider from "./src/services/socket/socketProvider";
 
 export default function App() {
-    return(
-       <AuthProvider>
-          <Navigations/>
-       </AuthProvider>
-    )
+    return (
+      <GlobalState>
+        <AuthProvider>
+          <GameState>
+            <SocketProvider>
+              <Navigations />
+            </SocketProvider>
+          </GameState>
+        </AuthProvider>
+      </GlobalState>
+    );
 }
 
