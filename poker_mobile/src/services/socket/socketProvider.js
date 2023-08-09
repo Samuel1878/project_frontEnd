@@ -1,14 +1,14 @@
 import { useContext, useEffect, useState } from "react"
 import AuthContext from "../auth/authContext"
 import SocketContext from "./socketContext";
-import io from "socket.io-client";
+import {io} from "socket.io-client";
 import {
   DISCONNECT,
   FETCH_LOBBY_INFO,
   PLAYERS_UPDATED,
   RECEIVE_LOBBY_INFO,
   TABLES_UPDATED,
-} from "../../pokergame/actions";
+} from "../../libs/actions";
 import globalContext from "../global/globalContext";
 import config from "../../libs/helper/config";
 

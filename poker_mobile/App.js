@@ -8,11 +8,13 @@ export default function App() {
     return (
       <GlobalState>
         <AuthProvider>
-          <GameState>
+         
             <SocketProvider>
+               <GameState>
               <Navigations />
+               </GameState>
             </SocketProvider>
-          </GameState>
+         
         </AuthProvider>
       </GlobalState>
     );

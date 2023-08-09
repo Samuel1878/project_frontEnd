@@ -1,0 +1,33 @@
+import axios from "axios";
+import { useContext, useEffect } from "react";
+import globalContext from "../services/global/globalContext";
+const loadUserData = (userToken) => {
+  const {
+        userName,
+        userPh,
+        userSrc,
+        chipsAmount,
+        setUserName, 
+        setUserPh, 
+        setUserSrc, 
+        setChipsAmount} = useContext(globalContext);
+
+  //userData
+  useEffect(()=>{
+     axios
+       .get("http://localhost:4001/api/userData/chip", {
+         params: { token: userToken, reqData: "allData" },
+         headers: { "Content-Type": "application/json" },
+       })
+       .then((res) => {
+         console.log(res.data);
+         setUserName(res.data.data.name);
+         setUserPh(res.data.data.phone);
+         setUserSrc(res.data.data.proSrc);
+         setChipsAmount(res.data.data.chips);
+       })
+       .catch((err) => console.warn(err.message));
+  },[])
+  return {userName,userPh, userSrc, chipsAmount}
+}
+export default loadUserData

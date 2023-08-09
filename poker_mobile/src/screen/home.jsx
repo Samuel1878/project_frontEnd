@@ -1,10 +1,14 @@
-import { Component,useEffect,useRef,useState } from "react";
+import { Component,useContext,useEffect,useRef,useState } from "react";
 import styles, { _light, _main,_lower, _second, bg_heavy, bg_hover, bg_normal } from "../__Style"
 import { Text, View ,ImageBackground, Image, TouchableOpacity,FlatList,SafeAreaView, TouchableWithoutFeedback,Animated} from "react-native";
 import { BlurView } from 'expo-blur';
 import { Video, ResizeMode } from "expo-av";
 import {LinearGradient} from "expo-linear-gradient"
 import Item from "../components/rooms";
+import GlobalState from "../services/global/globalState";
+import loadUserData from "../hooks/userData";
+import AuthContext from "../services/auth/authContext";
+
 
 const FlatData = [
     {
@@ -38,10 +42,11 @@ const FlatData = [
 const Home = ({navigation}) => {
   const twinkle = useRef(new Animated.Value(1)).current;
     const video = useRef(null)
-    const [userPhoto, setUserPhoto] = useState("undefined");
-    const [userChip, setUserChip] = useState("1000");
     const [selectedId, setSelectedId] = useState(null);
-    const [clicked, setClicked] = useState(false)
+    const [clicked, setClicked] = useState(false);
+    const {userToken} = useContext(AuthContext);
+   const {chipsAmount} = loadUserData(userToken);
+    
     const playHandler = ()=>{
       switch (selectedId) {
         case null:
@@ -98,6 +103,7 @@ const Home = ({navigation}) => {
     useEffect(()=>{
         video.current.playAsync()
     },[])
+    
     return (
       <TouchableWithoutFeedback
         style={{ flex: 1 }}
@@ -183,7 +189,7 @@ const Home = ({navigation}) => {
                   style={styles.navData}
                   source={require("../../assets/playBtn.jpg")}
                 >
-                  <Text style={styles.navChipTotal}>{`${userChip}  Chip`}</Text>
+                  <Text style={styles.navChipTotal}>{`${chipsAmount}  Chip`}</Text>
                   <Image
                     style={styles.navChip}
                     source={require("../../assets/chips.png")}

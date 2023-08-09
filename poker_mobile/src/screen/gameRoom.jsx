@@ -1,13 +1,29 @@
-import {useEffect} from "react";
+import {useEffect, useContext} from "react";
 import { Image, ImageBackground, Text, View,Pressable, } from "react-native";
 
 import styles, { _light, _lower, _main } from "../__Style";
 import Seat from "../components/seat";
 
 import { LinearGradient } from "react-native-svg";
+import gameContext from "../services/game/gameContext";
 
 
 export default GameRoom = () => {
+   const {
+    messages,
+    currentTable,
+    isPlayerSeated,
+    seatId,
+    joinTable,
+    leaveTable,
+    sitDown,
+    standUp,
+    fold,
+    check,
+    call,
+    raise,
+  } = useContext(gameContext);
+  console.log()
     return (
       <View style={{ flex: 1 }}>
         <ImageBackground

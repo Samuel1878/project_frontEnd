@@ -8,6 +8,8 @@ const GlobalState = ({ children }) => {
   const [chipsAmount, setChipsAmount] = useState(null);
   const [tables, setTables] = useState(null);
   const [players, setPlayers] = useState(null);
+  const [userPh, setUserPh] = useState("09 123...");
+  const [userSrc, setUserSrc] = useState("")
 
   return (
     <GlobalContext.Provider
@@ -24,6 +26,10 @@ const GlobalState = ({ children }) => {
         setTables,
         players,
         setPlayers,
+        userPh,
+        setUserPh,
+        userSrc, 
+        setUserSrc
       }}
     >
       {children}

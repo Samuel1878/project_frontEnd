@@ -3,32 +3,22 @@ import styles, { _lower, _main, _second } from "../__Style";
 import { BlurView } from "expo-blur";
 import { LinearGradient } from "expo-linear-gradient";
 import { useContext, useEffect,useState } from "react";
-import {AuthContext} from "../services/auth/AuthUser"
-import axios from "axios";
-import { requestPermissionsAsync } from "expo-av/build/Audio";
+import AuthContext from "../services/auth/authContext"
+import globalContext from "../services/global/globalContext";
 
 
 const UserProfile = ({navigation}) => {
-    const [name,setName] = useState("..........");
-    const [phone, setPhone ]= useState("09 1234 ...");
-    const [userSrc, setUserSrc] = useState(null);
-    const [chip, setChip] = useState("1000")
-    const { userToken,signOut } = useContext(AuthContext);
-    useEffect(()=>{
-        axios
-          .get("http://localhost:4001/api/userData/chip", {
-            params:{token:userToken,reqData:"allData"},
-            headers: { "Content-Type": "application/json" },
-          })
-          .then((res) => {
-            console.log(res.data);
-            setName(res.data.data.name);
-            setPhone(res.data.data.phone);
-            setUserSrc(res.data.data.proSrc);
-            setChip(res.data.data.chips)
-          })
-          .catch((err) => console.warn(err.message));
-    },[])
+    const { 
+        userName,
+        setUserName,
+        chipsAmount,
+        setChipsAmount,
+        userPh,
+        setUserPh,
+        userSrc, 
+        setUserSrc,} = useContext(globalContext);
+        const {signOut} = useContext(AuthContext);
+    
     return (
       <TouchableWithoutFeedback style={styles.profileContainer}>
         <ImageBackground
@@ -78,9 +68,9 @@ const UserProfile = ({navigation}) => {
             </View>
             <View style={styles.promid}>
               <Text style={styles.proData}>UserType: VIP</Text>
-              <Text style={styles.proData}>Name: {name}</Text>
-              <Text style={styles.proData}>Phone: {phone}</Text>
-              <Text style={styles.proData}>Chip: {chip}</Text>
+              <Text style={styles.proData}>Name: {userName}</Text>
+              <Text style={styles.proData}>Phone: {userPh}</Text>
+              <Text style={styles.proData}>Chip: {chipsAmount}</Text>
             </View>
             <View style={styles.proRight}>
               <Image
