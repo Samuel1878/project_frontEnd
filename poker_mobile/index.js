@@ -20,7 +20,6 @@ SplashScreen.preventAutoHideAsync();
 const Stack = createStackNavigator();
 const Navigations = () => {
   const { userToken, isLoading } = useContext(AuthContext);
-  console.log(userToken);
   let [fontsLoaded] = useFonts({
     Philosopher: require("./assets/fonts/Philosopher-Regular.ttf"),
     italino: require("./assets/fonts/Italianno-Regular.ttf"),

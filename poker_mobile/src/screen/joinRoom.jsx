@@ -1,16 +1,19 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { TextInput,SafeAreaView,KeyboardAvoidingView, ImageBackground } from "react-native";
 import styles, { _lower } from "../__Style";
 import ExitBtn from "../components/exitBtn";
 import { ResizeMode, Video } from "expo-av";
 import { TouchableOpacity,Text } from "react-native";
+import gameContext from "../services/game/gameContext";
 
 export default JoinPokerRoom = ({navigation}) => {
     const video = useRef(null);
     const [focused, setFocused] = useState(false)
     const [roomId , setRoomId] = useState("");
+    const {joinTable} = useContext(gameContext)
     const onSubmit = () => {
-        console.log(roomId);
+        joinTable(roomId);
+        navigation.navigate("GameRoom");
 
     }
   

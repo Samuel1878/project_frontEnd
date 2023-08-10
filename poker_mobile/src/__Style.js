@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
   videoHome: {
     position: "absolute",
     zIndex: -1,
-    top:0,
+    top: 0,
     left: 0,
     right: 0,
     bottom: 0,
@@ -463,7 +463,6 @@ const styles = StyleSheet.create({
     color: _main,
     fontSize: 18,
     letterSpacing: 2,
-
   },
   createBtn: {
     width: 200,
@@ -487,18 +486,36 @@ const styles = StyleSheet.create({
     zIndex: -1,
     position: "relative",
   },
-  userTable: {
-    position: "absolute",
-    bottom: 0,
-    flex:1,
-    width:"100%",
-    left: 0,
-    right: 0,
-    padding: 10,
-    zIndex: 0,
-  },
-  userTableBg: {
+  tablePart1: {
     flex: 1,
+    borderRadius:"25%"
+  },
+  tablePart2: {
+    flex: 1,
+  },
+  tablePart3: {
+    flex: 1,
+    backgroundColor:grey_4,
+  },
+  tablePart4: {
+    flex: 1,
+  },
+  tablePart5: {
+    flex: 1,
+  },
+  leaveTableBtn:{
+    position:"absolute",
+    left:10,
+    bottom:10,
+    padding:20,
+    borderRadius:"25%",
+    borderColor:_second,
+    borderWidth:5,
+  },
+  leaveTableBtnTxt:{
+    fontSize:18,
+    color:_main,
+    fontFamily:"Philosopher"
   },
 
   ///account

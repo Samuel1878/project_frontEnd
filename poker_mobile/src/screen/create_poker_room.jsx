@@ -1,10 +1,12 @@
 import { View, Button, TextInput, TouchableOpacity,Text} from "react-native";
 import * as Clipboard from "expo-clipboard"
 import styles from "../__Style"
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import ExitBtn from "../components/exitBtn";
 import { ImageBackground } from "react-native";
 import { ResizeMode, Video } from "expo-av";
+import gameContext from "../services/game/gameContext";
+import SocketContext from "../services/socket/socketContext";
 const randId = () => {
     return Math.random().toString(36).substr(2);
   };
@@ -14,6 +16,8 @@ const CreatePoker = ({navigation}) => {
     const [copied, setCopied] = useState(false)
     const [service, setService] = useState("");
     const [tableId, setTableId] = useState("");
+    const {joinTable, } = useContext(gameContext);
+    const {socket} = useContext(SocketContext)
     useEffect(()=>{
         const Id = randId();
         setTableId(Id);
@@ -21,7 +25,9 @@ const CreatePoker = ({navigation}) => {
     
     const createTable = () => {
         if(tableId){
+            socket && joinTable(tableId);
             navigation.navigate("GameRoom");
+            
             
         }
     }

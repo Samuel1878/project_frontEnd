@@ -38,9 +38,9 @@ const SocketProvider = ({children})=> {
             setTables(null);
     };
     function connect () {
-        const socket = io(config.socketURI, {
+        const socket = io("http://localhost:4001", {
           reconnectionDelayMax: 10000,
-        });
+        })
         registerCallbacks(socket);
         setSocket(socket);
         return socket;
