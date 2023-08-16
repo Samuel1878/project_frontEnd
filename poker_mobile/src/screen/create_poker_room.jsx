@@ -12,37 +12,35 @@ const randId = () => {
   };
 
 const CreatePoker = ({navigation}) => {
-    const video = useRef(null)
+    const video = useRef(null);
+    const [limit, setLimit] = useState(10000)
     const [copied, setCopied] = useState(false)
     const [service, setService] = useState("");
     const [tableId, setTableId] = useState("");
-    const {joinTable, } = useContext(gameContext);
+    const {createTable, } = useContext(gameContext);
     const {socket} = useContext(SocketContext)
     useEffect(()=>{
         const Id = randId();
         setTableId(Id);
-    }, [])
-    
-    const createTable = () => {
+    }, []);
+    const createtable = () => {
         if(tableId){
-            socket && joinTable(tableId);
+            socket && createTable(tableId, limit);
             navigation.navigate("GameRoom");
-            
-            
-        }
-    }
+          //  video.current.pauseAsync();
+        };
+    };
     const copyId = () => {
         Clipboard.setStringAsync(tableId);
         console.info(tableId);
         setCopied(true);
         setTimeout(()=>{
             setCopied(false)
-        },1500)
-    }
+        },1500);
+    };
     useEffect(()=>{
-        video.current.playAsync()
-    },[])
-    
+        //video.current.playAsync();
+    },[]);
     return (
        <View style={styles.createRoom}>
             <Video
@@ -86,7 +84,7 @@ const CreatePoker = ({navigation}) => {
 
                 <TouchableOpacity
                     style={styles.createBtn}
-                    onPress={createTable}>
+                    onPress={createtable}>
                         <ImageBackground
                             source={require("../../assets/btn.png")}
                             style={styles.createTableBtn}>

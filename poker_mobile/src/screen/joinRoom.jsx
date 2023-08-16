@@ -9,16 +9,17 @@ import gameContext from "../services/game/gameContext";
 export default JoinPokerRoom = ({navigation}) => {
     const video = useRef(null);
     const [focused, setFocused] = useState(false)
-    const [roomId , setRoomId] = useState("");
+    const [tableId , setTableId] = useState(null);
     const {joinTable} = useContext(gameContext)
     const onSubmit = () => {
-        joinTable(roomId);
+        joinTable(tableId);
         navigation.navigate("GameRoom");
+        //video.current.pauseAsync();
 
     }
   
     useEffect(()=>{
-        video.current.playAsync();
+       // video.current.playAsync();
     },[])
     return(
         <KeyboardAvoidingView 
@@ -33,8 +34,8 @@ export default JoinPokerRoom = ({navigation}) => {
                 style={styles.videoHome}/>
             <TextInput
                 style={styles.joinRoomInput}
-                        onChangeText={(e)=>setRoomId(e)}
-                        value={roomId}
+                        onChangeText={(e)=>setTableId(e)}
+                        value={tableId}
                         placeholderTextColor={_lower}
                         placeholder="Table ID"
                         onSubmitEditing={onSubmit}

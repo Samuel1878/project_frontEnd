@@ -23,7 +23,7 @@ const SocketProvider = ({children})=> {
     useEffect(()=>{
         if(userToken){
             const webSocket = socket || connect();
-            webSocket && webSocket.emit(FETCH_LOBBY_INFO, userToken);
+           webSocket && webSocket.emit(FETCH_LOBBY_INFO, userToken);
         }else{
             cleanUp();
         }

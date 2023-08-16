@@ -3,7 +3,7 @@ import { useRef, useState,useEffect, useContext } from "react";
 import GameContext from "./gameContext";
 import SocketContext from "../socket/socketContext";
 import AuthContext from "../auth/authContext";
-import { CALL, CHECK, FOLD, JOIN_TABLE, LEAVE_TABLE, RAISE, REBUY, SIT_DOWN,STAND_UP, TABLES_UPDATED, TABLE_JOINED, TABLE_LEFT } from "../../libs/actions";
+import { CALL, CHECK, CREATE_TABLE, FOLD, JOIN_TABLE, LEAVE_TABLE, RAISE, REBUY, SIT_DOWN,STAND_UP, TABLES_UPDATED, TABLE_JOINED, TABLE_LEFT } from "../../libs/actions";
 import loadUserData from "../../hooks/userData";
 
 const GameState = ({children}) => {
@@ -38,7 +38,7 @@ const GameState = ({children}) => {
       }, [turn]);
       useEffect(()=>{
         if(socket){
-            ///if offline or disconnect or close, call LeavetableFnc again!!!
+            ///if offline or disconnect or close, call LeavetableFnc again!!
             socket.on(TABLES_UPDATED, ({table,message,from})=>{
                 console.log(TABLES_UPDATED, table,message, from);
                 setCurrentTable(table);
@@ -46,7 +46,7 @@ const GameState = ({children}) => {
             });
             socket.on(TABLE_JOINED, ({tables, tableId})=>{
                 console.log(TABLE_JOINED, tables,tableId );
-                setCurrentTable(tables[tableId]);
+                setCurrentTable(tables);
             });
             socket.on(TABLE_LEFT,({tables, tableId})=>{
                 console.log(TABLE_LEFT, tables, tableId);
@@ -56,7 +56,12 @@ const GameState = ({children}) => {
             });
         }
         return () => leaveTable();
-      },[socket])
+      },[socket]);
+      
+      const createTable = (tableId, limit) =>{
+        console.log(CREATE_TABLE, tableId)
+        socket.emit(CREATE_TABLE, {tableId,limit});
+      }
       const joinTable = (tableId) => {
         console.log(JOIN_TABLE, tableId);
         socket.emit(JOIN_TABLE, tableId);
@@ -67,7 +72,6 @@ const GameState = ({children}) => {
         currentTableRef.current &&
         currentTableRef.current.id &&
         socket.emit(LEAVE_TABLE, currentTableRef.current.id);
-       
       }
       const sitDown = (tableId, seatId, amount) =>{
         socket.emit(SIT_DOWN, {tableId, seatId, amount});
@@ -115,6 +119,7 @@ const GameState = ({children}) => {
           currentTable,
           isPlayerSeated,
           seatId,
+          createTable,
           joinTable,
           leaveTable,
           sitDown,

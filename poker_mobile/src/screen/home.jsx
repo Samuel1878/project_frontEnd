@@ -48,6 +48,7 @@ const Home = ({navigation}) => {
    const {chipsAmount} = loadUserData(userToken);
     
     const playHandler = ()=>{
+      video.current.pauseAsync();
       switch (selectedId) {
         case null:
           navigation.navigate("create_poker_room");

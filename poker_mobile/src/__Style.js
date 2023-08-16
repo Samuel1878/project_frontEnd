@@ -486,37 +486,71 @@ const styles = StyleSheet.create({
     zIndex: -1,
     position: "relative",
   },
+  ////bottom
   tablePart1: {
     flex: 1,
-    borderRadius:"25%"
+    borderRadius: "25%",
   },
+  bottom1Con: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  leaveTableBtn: {
+    margin: 20,
+    padding: 20,
+    borderRadius: "20%",
+    borderColor: _second,
+    borderWidth: 5,
+  },
+  leaveTableBtnTxt: {
+    fontSize: 18,
+    color: _main,
+    fontFamily: "Philosopher",
+  },
+  unsitSeat: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  tablePreData: {
+    padding: 5,
+    backgroundColor: bg_light,
+  },
+  tableDataTxt: {
+    fontSize: 18,
+    color: _main,
+  },
+  buyIn: {
+    width: 60,
+    height: 20,
+    backgroundColor:_light
+  },
+  sitDownBtn: {
+    margin: 20,
+    padding: 20,
+    borderRadius: "20%",
+    borderColor: _second,
+    borderWidth: 5,
+  },
+  ///Low
   tablePart2: {
     flex: 1,
   },
+  ///mid
   tablePart3: {
     flex: 1,
-    backgroundColor:grey_4,
+    backgroundColor: grey_4,
   },
+  ///High
   tablePart4: {
     flex: 1,
   },
+  ///Top
   tablePart5: {
     flex: 1,
   },
-  leaveTableBtn:{
-    position:"absolute",
-    left:10,
-    bottom:10,
-    padding:20,
-    borderRadius:"25%",
-    borderColor:_second,
-    borderWidth:5,
-  },
-  leaveTableBtnTxt:{
-    fontSize:18,
-    color:_main,
-    fontFamily:"Philosopher"
-  },
+  ///
 
   ///account
   accountBg: {
