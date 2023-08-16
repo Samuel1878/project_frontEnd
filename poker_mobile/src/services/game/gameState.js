@@ -3,7 +3,7 @@ import { useRef, useState,useEffect, useContext } from "react";
 import GameContext from "./gameContext";
 import SocketContext from "../socket/socketContext";
 import AuthContext from "../auth/authContext";
-import { CALL, CHECK, CREATE_TABLE, FOLD, JOIN_TABLE, LEAVE_TABLE, RAISE, REBUY, SIT_DOWN,STAND_UP, TABLES_UPDATED, TABLE_JOINED, TABLE_LEFT } from "../../libs/actions";
+import { CALL, CHECK, CREATE_TABLE, FOLD, JOIN_TABLE, LEAVE_TABLE, RAISE, REBUY, SIT_DOWN,STAND_UP, TABLES_UPDATED, TABLE_JOINED, TABLE_LEFT,TABLE_UPDATED } from "../../libs/actions";
 import loadUserData from "../../hooks/userData";
 
 const GameState = ({children}) => {
@@ -11,6 +11,7 @@ const GameState = ({children}) => {
     const {userToken} = useContext(AuthContext);
     const [messages, setMessages] = useState([]);
     const [currentTable, setCurrentTable] = useState(null);
+    const [currentTables, setCurrentTables] = useState(null)
     const [isPlayerSeated, setIsPlayerSeated] = useState(false);
     const [turn, setTurn] = useState(false);
     const [seatId, setSeatId] = useState(null)
@@ -39,14 +40,15 @@ const GameState = ({children}) => {
       useEffect(()=>{
         if(socket){
             ///if offline or disconnect or close, call LeavetableFnc again!!
-            socket.on(TABLES_UPDATED, ({table,message,from})=>{
-                console.log(TABLES_UPDATED, table,message, from);
+            socket.on(TABLE_UPDATED, ({table,message,from})=>{
+                console.log(TABLES_UPDATED, table, from);
+                console.info(message)
                 setCurrentTable(table);
                 message && addMessage(message);
             });
             socket.on(TABLE_JOINED, ({tables, tableId})=>{
                 console.log(TABLE_JOINED, tables,tableId );
-                setCurrentTable(tables);
+                setCurrentTables(tables);
             });
             socket.on(TABLE_LEFT,({tables, tableId})=>{
                 console.log(TABLE_LEFT, tables, tableId);
@@ -119,6 +121,7 @@ const GameState = ({children}) => {
           currentTable,
           isPlayerSeated,
           seatId,
+          currentTables,
           createTable,
           joinTable,
           leaveTable,

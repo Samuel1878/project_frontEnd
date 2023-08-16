@@ -2,7 +2,7 @@ import {useEffect, useContext, useState} from "react";
 import { Image, ImageBackground, Text, View,Pressable, TouchableOpacity, TextInput, } from "react-native";
 
 import styles, { _light, _lower, _main } from "../__Style";
-import Seat from "../components/seat";
+import {Seat} from "../components/seat";
 
 import { LinearGradient } from "react-native-svg";
 import gameContext from "../services/game/gameContext";
@@ -10,10 +10,12 @@ import table from "../../assets/table.svg"
 
 import SocketContext from "../services/socket/socketContext";
 import globalContext from "../services/global/globalContext";
+import { GameUI } from "../components/GameUI";
 export default GameRoom = ({navigation}) => {
    const {
     messages,
     currentTable,
+    currentTables,
     isPlayerSeated,
     seatId,
     joinTable,
@@ -28,38 +30,39 @@ export default GameRoom = ({navigation}) => {
   const {socket} = useContext(SocketContext);
   const {chipsAmount} = useContext(globalContext);
   const [bet, setBet ] = useState(0);
+  const [amount, setAmount] = useState(null);
+  const [seatNo, setSeatNo] = useState(null)
   const maxBuyIn = currentTable?.limit;
   const minBuyIn = currentTable?.minBet * 2 * 10;
-  const [amount, setAmount] = useState(minBuyIn);
-  const validAmount = (m) => {
-    if( m <= minBuyIn){
-      return setAmount(minBuyIn)
-    }else if(m <= chipsAmount){
-      return setAmount(m)
-    } else {
-      setAmount(chipsAmount)
-      return
-    }
-  }
+ 
   function LeaveTable () {
     leaveTable();
     navigation.navigate("home");
   }
-  function sitDownFnc (id, seatNumber,amount) {
-    sitDown(id,seatNumber,parseInt(amount))
+  function sitDownFnc () {
+    if(parseInt(amount)<= (maxBuyIn)){
+        sitDown(
+          currentTable.id,
+          seatNo,
+          parseInt(amount)
+        )
+        return
+      }console.info("invalid Amount")
+      console.log(parseInt(amount))
   }
   useEffect(()=>{
     socket
     console.info(messages);
   },[socket])
   useEffect(()=>{
-    console.debug(currentTable?.currentNumberPlayers);
+    console.info(currentTable?.currentNumberPlayers);
     currentTable && 
       (currentTable.callAmount > currentTable.minBet
         ? setBet(currentTable.callAmount)
         :currentTable.pot>0
         ?setBet(currentTable.minRaise)
         :setBet(currentTable.minBet));
+      setAmount(currentTable?.limit.toString())
   },[currentTable])
     return (
       <View style={{ flex: 1 }}>
@@ -69,6 +72,12 @@ export default GameRoom = ({navigation}) => {
           style={styles.table}
         >
           <View style={styles.tablePart5}>
+            <Seat
+                  seatNumber={5}
+                  currentTable={currentTable}
+                  isPlayerSeated={isPlayerSeated}
+                  sitDown={sitDown}
+              />
 
           </View>
           <View style={styles.tablePart4}></View>
@@ -91,19 +100,19 @@ export default GameRoom = ({navigation}) => {
                   !isPlayerSeated? (
                     <View style={styles.unsitSeat}>
                       <View style={styles.tablePreData}>
-                        <Text style={styles.tableDataTxt}>{currentTable.name}</Text>
-                        <Text style={styles.tableDataTxt}>{currentTable.limit}</Text>
+                        <Text style={styles.tableDataTxt}>{currentTables.name.slice(0,9)}</Text>
+                        <Text style={styles.tableDataTxt}>{currentTables.limit}</Text>
                         <Text style={styles.tableDataTxt}>
-                          {currentTable.smallBlind} / {currentTable.bigBlind}</Text>
+                          {currentTables.smallBlind} / {currentTables.bigBlind}</Text>
                       </View>
                         <TextInput
                           style={styles.buyIn}
-                          keyboardType="numeric"
-                          onChangeText={(e)=>validAmount(e)}
-                          defaultValue={minBuyIn}
-                          value={amount}/>
+                          //keyboardType="numeric"
+                          //maxLength={maxBuyIn.length}
+                          onChangeText={(e)=>setAmount(e)}
+                          defaultValue={amount}/>
                         <TouchableOpacity
-                        onPress={()=>sitDownFnc(currentTable.id,currentTable.currentNumberPlayers,amount)}
+                        onPress={sitDownFnc}
                         style={styles.sitDownBtn}>
                           <Text style={styles.leaveTableBtnTxt}>
                             Sit Down
@@ -113,8 +122,17 @@ export default GameRoom = ({navigation}) => {
                     
                     </View>
                   ):(
-                    <GameUi/>
-                  )
+                    <GameUI 
+                      currentTable={currentTable}
+                      seatId={seatId}
+                      bet={bet}
+                      setBet={setBet}
+                      raise={raise}
+                      standUp={standUp}
+                      fold={fold}
+                      check={check}
+                      call={call}/>
+                    )
 
                 }
               </View>)

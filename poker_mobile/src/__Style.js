@@ -497,8 +497,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   leaveTableBtn: {
-    margin: 20,
-    padding: 20,
+    margin: 10,
+    padding: 10,
     borderRadius: "20%",
     borderColor: _second,
     borderWidth: 5,
@@ -515,20 +515,24 @@ const styles = StyleSheet.create({
   },
   tablePreData: {
     padding: 5,
-    backgroundColor: bg_light,
   },
   tableDataTxt: {
     fontSize: 18,
     color: _main,
   },
   buyIn: {
-    width: 60,
-    height: 20,
-    backgroundColor:_light
+    color: _main,
+    fontSize:20,
+    width: 120,
+    padding:10,
+    margin:10,
+    borderRadius: 10,
+    borderColor: _second,
+    borderWidth: 5,
   },
   sitDownBtn: {
-    margin: 20,
-    padding: 20,
+    margin: 10,
+    padding: 10,
     borderRadius: "20%",
     borderColor: _second,
     borderWidth: 5,
