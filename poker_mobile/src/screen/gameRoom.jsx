@@ -31,7 +31,7 @@ export default GameRoom = ({navigation}) => {
   const {chipsAmount} = useContext(globalContext);
   const [bet, setBet ] = useState(0);
   const [amount, setAmount] = useState(null);
-  const [seatNo, setSeatNo] = useState(null)
+  const [seatNo, setSeatNo] = useState("")
   const maxBuyIn = currentTable?.limit;
   const minBuyIn = currentTable?.minBet * 2 * 10;
  
@@ -41,6 +41,7 @@ export default GameRoom = ({navigation}) => {
   }
   function sitDownFnc () {
     if(parseInt(amount)<= (maxBuyIn)){
+      setSeatNo(currentTable?.players?.length)
         sitDown(
           currentTable.id,
           seatNo,
@@ -49,13 +50,14 @@ export default GameRoom = ({navigation}) => {
         return
       }console.info("invalid Amount")
       console.log(parseInt(amount))
+      
   }
   useEffect(()=>{
     socket
     console.info(messages);
   },[socket])
   useEffect(()=>{
-    console.info(currentTable?.currentNumberPlayers);
+    console.debug(currentTable);
     currentTable && 
       (currentTable.callAmount > currentTable.minBet
         ? setBet(currentTable.callAmount)
@@ -72,19 +74,64 @@ export default GameRoom = ({navigation}) => {
           style={styles.table}
         >
           <View style={styles.tablePart5}>
-            <Seat
+            <View style={styles.seat7}>
+              <Seat
+                  seatNumber={7}
+                  currentTable={currentTable}
+                  isPlayerSeated={isPlayerSeated}
+          
+              />
+            </View>
+           <View style={styles.seat6}>
+              <Seat
+                  seatNumber={6}
+                  currentTable={currentTable}
+                  isPlayerSeated={isPlayerSeated}
+              />
+            </View>
+
+          </View>
+          <View style={styles.tablePart4}>
+            <View style={styles.seat5}>
+              <Seat
                   seatNumber={5}
                   currentTable={currentTable}
                   isPlayerSeated={isPlayerSeated}
-                  sitDown={sitDown}
               />
+            </View>
+            <View style={styles.pot}>
 
+            </View>
+            <View style={styles.seat4}>
+              <Seat
+                  seatNumber={4}
+                  currentTable={currentTable}
+                  isPlayerSeated={isPlayerSeated}
+              />
+            </View>
           </View>
-          <View style={styles.tablePart4}></View>
           <View style={styles.tablePart3}>
     
           </View>
-          <View style={styles.tablePart2}></View>
+          <View style={styles.tablePart2}>
+            <View style={styles.seat3}>
+              <Seat
+                  seatNumber={3}
+                  currentTable={currentTable}
+                  isPlayerSeated={isPlayerSeated}
+              />
+            </View>
+            <View style={styles.messagesBox}>
+
+            </View>
+            <View style={styles.seat2}>
+              <Seat
+                  seatNumber={2}
+                  currentTable={currentTable}
+                  isPlayerSeated={isPlayerSeated}
+              />
+            </View>
+          </View>
           <View style={styles.tablePart1}>
             {
               currentTable && (
@@ -122,16 +169,24 @@ export default GameRoom = ({navigation}) => {
                     
                     </View>
                   ):(
-                    <GameUI 
-                      currentTable={currentTable}
-                      seatId={seatId}
-                      bet={bet}
-                      setBet={setBet}
-                      raise={raise}
-                      standUp={standUp}
-                      fold={fold}
-                      check={check}
-                      call={call}/>
+                    <>
+                      <GameUI 
+                        currentTable={currentTable}
+                        seatId={seatId}
+                        bet={bet}
+                        setBet={setBet}
+                        raise={raise}
+                        standUp={standUp}
+                        fold={fold}
+                        check={check}
+                        call={call}/>
+                      <View style={styles.seat1}>
+                        <Seat
+                          seatNumber={seatNo}
+                          currentTable={currentTable}
+                        />
+                      </View>
+                    </>
                     )
 
                 }

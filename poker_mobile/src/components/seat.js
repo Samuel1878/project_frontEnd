@@ -5,7 +5,6 @@ export const Seat = ({
   currentTable,
   seatNumber,
   isPlayerSeated,
-  sitDown,
 }) => {
   const [isTurn, setIsTurn] = useState(false);
 const rs = [1,2,3,4,5,6,7,8,9,];
@@ -19,14 +18,15 @@ console.debug(currentTable?.seats);
 
 
   return (
-    <View>
+    <View style={{ width: 100, height: 100 }}>
       <CountdownCircleTimer
         isPlaying={isTurn}
-        duration={100}
+        size={110}
+        duration={20}
         colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
-        colorsTime={[100, 50, 25, 10]}
-        onComplete={() => ({ shouldRepeat: false, delay: 1 })}
-        updateInterval={1}
+        colorsTime={[20, 7]}
+        onComplete={() => ({ shouldRepeat: false, delay: 0.5 })}
+        updateInterval={0.1}
       ></CountdownCircleTimer>
     </View>
   );

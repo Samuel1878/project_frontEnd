@@ -490,6 +490,7 @@ const styles = StyleSheet.create({
   tablePart1: {
     flex: 1,
     borderRadius: "25%",
+    position: "relative",
   },
   bottom1Con: {
     flexDirection: "row",
@@ -522,10 +523,10 @@ const styles = StyleSheet.create({
   },
   buyIn: {
     color: _main,
-    fontSize:20,
+    fontSize: 20,
     width: 120,
-    padding:10,
-    margin:10,
+    padding: 10,
+    margin: 10,
     borderRadius: 10,
     borderColor: _second,
     borderWidth: 5,
@@ -537,9 +538,31 @@ const styles = StyleSheet.create({
     borderColor: _second,
     borderWidth: 5,
   },
+  //Seat 1, tablePart1:
+  seat1: {
+    position: "absolute",
+    bottom: 0,
+    left: "45%",
+  },
+
   ///Low
   tablePart2: {
     flex: 1,
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  seat2: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  messagesBox: {
+    flex: 1,
+  },
+  seat3: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
   },
   ///mid
   tablePart3: {
@@ -549,11 +572,39 @@ const styles = StyleSheet.create({
   ///High
   tablePart4: {
     flex: 1,
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  seat4: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  pot: {
+    flex: 1,
+  },
+  seat5: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
   },
   ///Top
   tablePart5: {
     flex: 1,
+    flexDirection: "row",
+    justifyContent:"space-around",
+    alignItems: "center",
+    gap:100
   },
+  seat6: {
+    flex:1,
+    alignItems:"flex-start"
+  },
+  seat7: {
+    flex:1,
+    alignItems:"flex-end"
+  },
+
   ///
 
   ///account
