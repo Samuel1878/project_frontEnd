@@ -1,4 +1,6 @@
-import { View,Text } from "react-native"
+import { View,Text, TouchableOpacity } from "react-native";
+import styles from "../__Style";
+import { GameBtn } from "./gameBtn";
 
 export const GameUI = ({
     currentTable,
@@ -12,8 +14,18 @@ export const GameUI = ({
     call
 })=>{
     return(
-        <View>
-            <Text>Game UI</Text>
+        <View style={styles.gameUICon}>
+           <GameBtn action={fold}>
+                <Text style={styles.foldTxt}>
+                    Fold
+                </Text>
+           </GameBtn>
+           <GameBtn action={check}>
+                <Text style={styles.foldTxt}>
+                    Check
+                </Text>
+           </GameBtn>
+           
         </View>
     )
 }

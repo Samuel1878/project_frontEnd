@@ -27,7 +27,14 @@ const loadUserData = (userToken) => {
          setChipsAmount(res.data.data.chips);
        })
        .catch((err) => console.warn(err.message));
-  },[])
+  },[]);
+  useEffect(()=>{
+    if(userSrc === null){
+      setUserSrc(
+        require("../../assets/game/king-rounded-img.png")
+      );
+    }
+  },[userSrc])
   return {userName,userPh, userSrc, chipsAmount}
 }
 export default loadUserData

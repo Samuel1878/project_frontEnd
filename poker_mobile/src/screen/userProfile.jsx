@@ -18,6 +18,7 @@ const UserProfile = ({navigation}) => {
         userSrc, 
         setUserSrc,} = useContext(globalContext);
         const {signOut} = useContext(AuthContext);
+        
     
     return (
       <TouchableWithoutFeedback style={styles.profileContainer}>
@@ -46,25 +47,23 @@ const UserProfile = ({navigation}) => {
           <View style={styles.proTop}></View>
           <BlurView style={styles.proMid} intensity={10} tint="dark">
             <View style={styles.proLeft}>
-              <ImageBackground
-                resizeMode="cover"
+              <View
                 style={styles.avatar}
-                source={require("../../assets/avatar.png")}
-              >
+               >
                 {userSrc == null ? (
                   <Image
                     resizeMode="cover"
                     style={styles.defaultUserProfile}
-                    source={require("../../assets/user.png")}
+                    source={require("../../assets/game/king-rounded-img.png")}
                   />
                 ) : (
                   <Image
                     resizeMode="cover"
                     style={styles.defaultUserProfile}
-                    source={{uri:userSrc}}
+                    source={userSrc}
                   />
                 )}
-              </ImageBackground>
+              </View>
             </View>
             <View style={styles.promid}>
               <Text style={styles.proData}>UserType: VIP</Text>

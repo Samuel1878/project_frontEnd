@@ -3,6 +3,7 @@ import { Image, ImageBackground, Text, View,Pressable, TouchableOpacity, TextInp
 
 import styles, { _light, _lower, _main } from "../__Style";
 import {Seat} from "../components/seat";
+import { UserSeat } from "../components/UserSeat";
 
 import { LinearGradient } from "react-native-svg";
 import gameContext from "../services/game/gameContext";
@@ -74,6 +75,13 @@ export default GameRoom = ({navigation}) => {
           style={styles.table}
         >
           <View style={styles.tablePart5}>
+            {
+              currentTable && (
+                <Text style={styles.tableId}>
+                  Table:{currentTable.id}
+            </Text>
+              )
+            }
             <View style={styles.seat7}>
               <Seat
                   seatNumber={7}
@@ -143,6 +151,7 @@ export default GameRoom = ({navigation}) => {
                     Leave table
                   </Text>
                 </TouchableOpacity>
+                
                 {
                   !isPlayerSeated? (
                     <View style={styles.unsitSeat}>
@@ -170,6 +179,11 @@ export default GameRoom = ({navigation}) => {
                     </View>
                   ):(
                     <>
+                      <TouchableOpacity
+                        style={styles.standUpBtn}
+                        onPress={()=>standUp()}>
+                        <Text>Stand Up</Text>
+                      </TouchableOpacity>
                       <GameUI 
                         currentTable={currentTable}
                         seatId={seatId}
@@ -181,7 +195,7 @@ export default GameRoom = ({navigation}) => {
                         check={check}
                         call={call}/>
                       <View style={styles.seat1}>
-                        <Seat
+                        <UserSeat
                           seatNumber={seatNo}
                           currentTable={currentTable}
                         />

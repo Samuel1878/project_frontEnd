@@ -1,11 +1,10 @@
-import { Component,useContext,useEffect,useRef,useState } from "react";
+import { useContext,useEffect,useRef,useState } from "react";
 import styles, { _light, _main,_lower, _second, bg_heavy, bg_hover, bg_normal } from "../__Style"
 import { Text, View ,ImageBackground, Image, TouchableOpacity,FlatList,SafeAreaView, TouchableWithoutFeedback,Animated} from "react-native";
 import { BlurView } from 'expo-blur';
 import { Video, ResizeMode } from "expo-av";
 import {LinearGradient} from "expo-linear-gradient"
 import Item from "../components/rooms";
-import GlobalState from "../services/global/globalState";
 import loadUserData from "../hooks/userData";
 import AuthContext from "../services/auth/authContext";
 
@@ -43,9 +42,10 @@ const Home = ({navigation}) => {
   const twinkle = useRef(new Animated.Value(1)).current;
     const video = useRef(null)
     const [selectedId, setSelectedId] = useState(null);
-    const [clicked, setClicked] = useState(false);
+    // const [clicked, setClicked] = useState(false);
     const {userToken} = useContext(AuthContext);
-   const {chipsAmount} = loadUserData(userToken);
+    const {chipsAmount} = loadUserData(userToken);
+   
     
     const playHandler = ()=>{
       video.current.pauseAsync();
@@ -102,7 +102,7 @@ const Home = ({navigation}) => {
       }
     },[selectedId])
     useEffect(()=>{
-        video.current.playAsync()
+        video.current.playAsync();
     },[])
     
     return (

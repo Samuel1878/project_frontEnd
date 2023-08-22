@@ -1,33 +1,32 @@
-import React, { useEffect, useState } from "react";
-import {Text,View} from "react-native";
-import { CountdownCircleTimer } from 'react-native-countdown-circle-timer';
+import React, { useEffect, useState,useContext } from "react";
+import {Text,View,Image} from "react-native";
+import SeatTimer from "./seatTimer";
+import styles from "../__Style";
+
 export const Seat = ({
   currentTable,
   seatNumber,
   isPlayerSeated,
 }) => {
-  const [isTurn, setIsTurn] = useState(false);
-const rs = [1,2,3,4,5,6,7,8,9,];
+const [isTurn, setIsTurn] = useState(false);
 useEffect(()=>{
 console.debug(currentTable?.seats);
 },[currentTable])
 
 
 
-
+useEffect(()=>{
+    
+},[])
 
 
   return (
     <View style={{ width: 100, height: 100 }}>
-      <CountdownCircleTimer
-        isPlaying={isTurn}
-        size={110}
-        duration={20}
-        colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
-        colorsTime={[20, 7]}
-        onComplete={() => ({ shouldRepeat: false, delay: 0.5 })}
-        updateInterval={0.1}
-      ></CountdownCircleTimer>
+        
+      <SeatTimer
+        isTurn={isTurn}>
+       
+      </SeatTimer>
     </View>
   );
 };

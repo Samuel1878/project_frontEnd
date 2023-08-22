@@ -413,9 +413,14 @@ const styles = StyleSheet.create({
   joinRoomContainer: {
     backgroundColor: "transparent",
     flex: 1,
+  },
+  joinRoom: {
+    flex: 1,
+    resizeMode: "cover",
     justifyContent: "center",
     alignItems: "center",
   },
+
   joinRoomBg: {
     width: "100%",
     height: "100%",
@@ -479,12 +484,15 @@ const styles = StyleSheet.create({
   createBtnTxt: {
     color: _main,
     fontSize: 18,
+    fontFamily: "Philosopher",
   },
   ////game ROOM
   table: {
     flex: 1,
     zIndex: -1,
     position: "relative",
+    paddingRight: 20,
+    paddingLeft: 10,
   },
   ////bottom
   tablePart1: {
@@ -538,13 +546,60 @@ const styles = StyleSheet.create({
     borderColor: _second,
     borderWidth: 5,
   },
-  //Seat 1, tablePart1:
+  //standUp
+  standUpBtn: {
+    left: 200,
+    bottom: 0,
+    padding: 10,
+    borderRadius: "100%",
+    borderColor: _second,
+    borderWidth: 5,
+    position: "absolute",
+  },
+  //Seat 1, tablePart1:User
   seat1: {
     position: "absolute",
     bottom: 0,
     left: "45%",
   },
-
+  userSeatCon: {
+    width: 110,
+    height: 110,
+    position: "relative",
+  },
+  showProfileBtn: {
+    position: "absolute",
+    top: 5,
+    left: 5,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  seatUserImg: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    zIndex: 99,
+  },
+  ///Game UI
+  gameUICon: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "yellow",
+  },
+  gameBtn: {
+    margin: 10,
+    padding: 10,
+    borderRadius: "20%",
+    borderColor: _second,
+    borderWidth: 5,
+  },
+  foldTxt:{
+    color:_main,
+    fontSize:18,
+    fontFamily:"Philosopher",
+    
+  },
   ///Low
   tablePart2: {
     flex: 1,
@@ -567,7 +622,8 @@ const styles = StyleSheet.create({
   ///mid
   tablePart3: {
     flex: 1,
-    backgroundColor: grey_4,
+    alignItems: "center",
+    justifyContent: "center",
   },
   ///High
   tablePart4: {
@@ -592,17 +648,36 @@ const styles = StyleSheet.create({
   tablePart5: {
     flex: 1,
     flexDirection: "row",
-    justifyContent:"space-around",
+    justifyContent: "space-between",
     alignItems: "center",
-    gap:100
+    gap: 100,
+  },
+  tableId: {
+    position: "absolute",
+    top: 5,
+    left: 5,
+    color: _main,
+    backgroundColor: bg_heavy,
+    padding: 5,
+    fontSize: 20,
+    fontFamily: "Philosopher",
+    borderRadius: 10,
   },
   seat6: {
-    flex:1,
-    alignItems:"flex-start"
+    flex: 1,
+    position: "absolute",
+    top: 0,
+    left: "30%",
+    //alignItems: "flex-start",
+    justifyContent: "flex-start",
   },
   seat7: {
-    flex:1,
-    alignItems:"flex-end"
+    position: "absolute",
+    top: 0,
+    right: "30%",
+    flex: 1,
+    //alignItems: "flex-end",
+    justifyContent: "flex-start",
   },
 
   ///
@@ -891,15 +966,19 @@ const styles = StyleSheet.create({
   },
   proLeft: {
     flex: 1,
-    padding: 20,
+
+    justifyContent: "center",
+    alignItems: "center",
   },
   avatar: {
-    width: "100%",
-    height: "100%",
+    margin: "auto",
+    width: "60%",
+    height: "60%",
     backgroundColor: _main,
     backfaceVisibility: "visible",
     justifyContent: "center",
     alignItems: "center",
+    borderRadius: "25%",
   },
   defaultUserProfile: {
     width: "100%",
@@ -912,20 +991,21 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   proData: {
-    fontFamily: "italino",
-    fontSize: 36,
+    fontFamily: "Philosopher",
+    fontSize: 18,
     fontWeight: "900",
     marginVertical: 5,
     color: _main,
   },
   proRight: {
-    flex: 1.2,
+    flex: 1.4,
     alignItems: "center",
     justifyContent: "center",
   },
   vipLogo: {
-    width: 300,
+    width: 330,
     height: 250,
+    margin: 5,
   },
   proBot: {
     flex: 1,

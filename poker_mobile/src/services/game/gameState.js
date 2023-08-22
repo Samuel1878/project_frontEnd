@@ -57,7 +57,7 @@ const GameState = ({children}) => {
                 setMessages([]);
             });
         }
-        return () => leaveTable();
+        //return () => leaveTable();
       },[socket]);
       
       const createTable = (tableId, limit) =>{

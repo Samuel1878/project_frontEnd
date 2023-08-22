@@ -42,15 +42,11 @@ const CreatePoker = ({navigation}) => {
         //video.current.playAsync();
     },[]);
     return (
-       <View style={styles.createRoom}>
-            <Video
-                style={styles.videoHome}
-                resizeMode={ResizeMode.COVER}
-                source={require("../../assets/create.mp4")}
-                isLooping
-                isMuted
-                useNativeControls={false}
-                ref={video}/>
+       
+            <ImageBackground
+                style={styles.createRoom}
+                resizeMode="cover"
+                source={require("../../assets/createRoomBg.jpg")}>
                 <View style={{flexDirection:"row", justifyContent:"space-between",marginBottom:10}}>
                     <Text style={styles.createBtnTxt}>Table ID: </Text>
                     <TextInput
@@ -94,7 +90,7 @@ const CreatePoker = ({navigation}) => {
                         </ImageBackground>
                 </TouchableOpacity>
             <ExitBtn value={navigation}/>
-       </View>
+       </ImageBackground>
     )
 }
 export default CreatePoker;

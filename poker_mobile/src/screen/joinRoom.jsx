@@ -7,7 +7,7 @@ import { TouchableOpacity,Text } from "react-native";
 import gameContext from "../services/game/gameContext";
 
 export default JoinPokerRoom = ({navigation}) => {
-    const video = useRef(null);
+    
     const [focused, setFocused] = useState(false)
     const [tableId , setTableId] = useState(null);
     const {joinTable} = useContext(gameContext)
@@ -25,13 +25,10 @@ export default JoinPokerRoom = ({navigation}) => {
         <KeyboardAvoidingView 
             behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
             style={styles.joinRoomContainer}>
-            <Video
-                ref={video}
-                resizeMode={ResizeMode.COVER}
-                isLooping
-                useNativeControls={false}
-                source={require("../../assets/join.mp4")}
-                style={styles.videoHome}/>
+            <ImageBackground
+                resizeMode="cover"
+                source={require("../../assets/joinRoomBg.jpg")}
+                style={styles.joinRoom}>
             <TextInput
                 style={styles.joinRoomInput}
                         onChangeText={(e)=>setTableId(e)}
@@ -58,6 +55,7 @@ export default JoinPokerRoom = ({navigation}) => {
             </TouchableOpacity>):null
            }
             <ExitBtn value={navigation}/>
+        </ImageBackground>
         </KeyboardAvoidingView>
     )
 }
