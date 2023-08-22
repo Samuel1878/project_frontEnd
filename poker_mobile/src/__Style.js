@@ -582,23 +582,35 @@ const styles = StyleSheet.create({
   },
   ///Game UI
   gameUICon: {
-    flex: 1,
-    justifyContent: "center",
+    justifyContent: "space-around",
     alignItems: "center",
-    backgroundColor: "yellow",
+    flexDirection: "row",
   },
   gameBtn: {
     margin: 10,
     padding: 10,
     borderRadius: "20%",
-    borderColor: _second,
+    borderColor: _main,
     borderWidth: 5,
   },
-  foldTxt:{
-    color:_main,
-    fontSize:18,
-    fontFamily:"Philosopher",
-    
+  foldTxt: {
+    color: _second,
+    fontSize: 18,
+    fontFamily: "Philosopher",
+  },
+  betBtn: {
+    margin: 10,
+    padding: 10,
+    borderRadius: "20%",
+    borderColor: _main,
+    borderWidth: 5,
+  },
+  allInBtn: {
+    margin: 10,
+    padding: 10,
+    borderRadius: "20%",
+    borderColor: _main,
+    borderWidth: 5,
   },
   ///Low
   tablePart2: {

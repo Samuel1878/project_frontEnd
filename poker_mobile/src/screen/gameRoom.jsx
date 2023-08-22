@@ -32,7 +32,7 @@ export default GameRoom = ({navigation}) => {
   const {chipsAmount} = useContext(globalContext);
   const [bet, setBet ] = useState(0);
   const [amount, setAmount] = useState(null);
-  const [seatNo, setSeatNo] = useState("")
+ 
   const maxBuyIn = currentTable?.limit;
   const minBuyIn = currentTable?.minBet * 2 * 10;
  
@@ -40,19 +40,20 @@ export default GameRoom = ({navigation}) => {
     leaveTable();
     navigation.navigate("home");
   }
-  function sitDownFnc () {
+  async function sitDownFnc () {
+    let seatNo = currentTable?.players?.length == 0? 1:currentTable?.players?.length
     if(parseInt(amount)<= (maxBuyIn)){
-      setSeatNo(currentTable?.players?.length)
-        sitDown(
-          currentTable.id,
-          seatNo,
-          parseInt(amount)
-        )
+       await sitDown(
+            currentTable.id,
+            seatNo,
+            parseInt(amount)
+          )
         return
-      }console.info("invalid Amount")
-      console.log(parseInt(amount))
-      
-  }
+    }
+    console.info("invalid Amount")
+    console.log(parseInt(amount))
+  } 
+  
   useEffect(()=>{
     socket
     console.info(messages);
@@ -196,7 +197,7 @@ export default GameRoom = ({navigation}) => {
                         call={call}/>
                       <View style={styles.seat1}>
                         <UserSeat
-                          seatNumber={seatNo}
+                          seatNumber={seatId}
                           currentTable={currentTable}
                         />
                       </View>
