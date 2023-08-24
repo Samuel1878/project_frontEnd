@@ -54,7 +54,7 @@ export const GameUI = ({
           }
           style={styles.allInBtn}
         >
-          <Text style={styles.allIn}>All-in</Text>
+          <Text style={styles.foldTxt}>All-in</Text>
         </TouchableOpacity>
       </View>
     );

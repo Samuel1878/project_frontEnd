@@ -20,7 +20,6 @@ const loadUserData = (userToken) => {
          headers: { "Content-Type": "application/json" },
        })
        .then((res) => {
-         console.log(res.data);
          setUserName(res.data.data.name);
          setUserPh(res.data.data.phone);
          setUserSrc(res.data.data.proSrc);

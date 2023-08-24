@@ -9,11 +9,14 @@ const GlobalState = ({ children }) => {
   const [tables, setTables] = useState(null);
   const [players, setPlayers] = useState(null);
   const [userPh, setUserPh] = useState("09 123...");
-  const [userSrc, setUserSrc] = useState("")
+  const [userSrc, setUserSrc] = useState("");
+  const [oppUser, setOppUser] = useState([]);
 
   return (
     <GlobalContext.Provider
       value={{
+        oppUser, 
+        setOppUser,
         isLoading,
         setIsLoading,
         userName,

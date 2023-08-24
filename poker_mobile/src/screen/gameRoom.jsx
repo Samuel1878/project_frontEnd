@@ -29,7 +29,7 @@ export default GameRoom = ({navigation}) => {
     raise,
   } = useContext(gameContext);
   const {socket} = useContext(SocketContext);
-  const {chipsAmount} = useContext(globalContext);
+  const {chipsAmount,setOppUser,oppUser} = useContext(globalContext);
   const [bet, setBet ] = useState(0);
   const [amount, setAmount] = useState(null);
  
@@ -39,9 +39,14 @@ export default GameRoom = ({navigation}) => {
   function LeaveTable () {
     leaveTable();
     navigation.navigate("home");
+    setOppUser([])
+  }
+  const checkEmptySeat = () => {
+    
+    return currentTable?.players?.length == 0? 1: currentTable?.players?.length
   }
   async function sitDownFnc () {
-    let seatNo = currentTable?.players?.length == 0? 1:currentTable?.players?.length
+    let seatNo = await checkEmptySeat() 
     if(parseInt(amount)<= (maxBuyIn)){
        await sitDown(
             currentTable.id,
@@ -53,13 +58,22 @@ export default GameRoom = ({navigation}) => {
     console.info("invalid Amount")
     console.log(parseInt(amount))
   } 
-  
+  useEffect(()=>{
+    if(currentTable && seatId){
+      setOppUser(Object.keys(currentTable.seats).filter(v => v != seatId))
+    }
+  },[seatId,currentTable]);
+  // useEffect(()=>{
+  //   for (let index = 0; index < array.length; index++) {
+  //     const element = array[index];
+      
+  //   }
+  // },[oppUser])
   useEffect(()=>{
     socket
     console.info(messages);
   },[socket])
   useEffect(()=>{
-    console.debug(currentTable);
     currentTable && 
       (currentTable.callAmount > currentTable.minBet
         ? setBet(currentTable.callAmount)
@@ -79,13 +93,13 @@ export default GameRoom = ({navigation}) => {
             {
               currentTable && (
                 <Text style={styles.tableId}>
-                  Table:{currentTable.id}
+                  Table id:{currentTable.id}
             </Text>
               )
             }
             <View style={styles.seat7}>
               <Seat
-                  seatNumber={7}
+                  seatNumber={oppUser[5]}
                   currentTable={currentTable}
                   isPlayerSeated={isPlayerSeated}
           
@@ -93,7 +107,7 @@ export default GameRoom = ({navigation}) => {
             </View>
            <View style={styles.seat6}>
               <Seat
-                  seatNumber={6}
+                  seatNumber={oppUser[4]}
                   currentTable={currentTable}
                   isPlayerSeated={isPlayerSeated}
               />
@@ -103,7 +117,7 @@ export default GameRoom = ({navigation}) => {
           <View style={styles.tablePart4}>
             <View style={styles.seat5}>
               <Seat
-                  seatNumber={5}
+                  seatNumber={oppUser[3]}
                   currentTable={currentTable}
                   isPlayerSeated={isPlayerSeated}
               />
@@ -113,7 +127,7 @@ export default GameRoom = ({navigation}) => {
             </View>
             <View style={styles.seat4}>
               <Seat
-                  seatNumber={4}
+                  seatNumber={oppUser[2]}
                   currentTable={currentTable}
                   isPlayerSeated={isPlayerSeated}
               />
@@ -125,7 +139,7 @@ export default GameRoom = ({navigation}) => {
           <View style={styles.tablePart2}>
             <View style={styles.seat3}>
               <Seat
-                  seatNumber={3}
+                  seatNumber={oppUser[1]}
                   currentTable={currentTable}
                   isPlayerSeated={isPlayerSeated}
               />
@@ -135,7 +149,7 @@ export default GameRoom = ({navigation}) => {
             </View>
             <View style={styles.seat2}>
               <Seat
-                  seatNumber={2}
+                  seatNumber={oppUser[0]}
                   currentTable={currentTable}
                   isPlayerSeated={isPlayerSeated}
               />
@@ -157,11 +171,16 @@ export default GameRoom = ({navigation}) => {
                   !isPlayerSeated? (
                     <View style={styles.unsitSeat}>
                       <View style={styles.tablePreData}>
-                        <Text style={styles.tableDataTxt}>{currentTables.name.slice(0,9)}</Text>
-                        <Text style={styles.tableDataTxt}>{currentTables.limit}</Text>
+                        <Text style={styles.tableDataTxt}>        
+                         {currentTables.name.slice(0,17).toUpperCase()}
+                        </Text>
+                        <Text style={styles.tableDataTxt}>  
+                         | Limit: {currentTables.limit}   
+                        </Text>
                         <Text style={styles.tableDataTxt}>
-                          {currentTables.smallBlind} / {currentTables.bigBlind}</Text>
+                          | Blinds: {currentTables.smallBlind} / {currentTables.bigBlind}</Text>
                       </View>
+                        <Text style={styles.tableDataTxt}> Buy in:</Text>
                         <TextInput
                           style={styles.buyIn}
                           //keyboardType="numeric"
@@ -183,7 +202,7 @@ export default GameRoom = ({navigation}) => {
                       <TouchableOpacity
                         style={styles.standUpBtn}
                         onPress={()=>standUp()}>
-                        <Text>Stand Up</Text>
+                        <Text style={styles.tableDataTxt}>Stand Up</Text>
                       </TouchableOpacity>
                       <GameUI 
                         currentTable={currentTable}

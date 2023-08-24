@@ -524,20 +524,30 @@ const styles = StyleSheet.create({
   },
   tablePreData: {
     padding: 5,
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+    borderRadius: "50%",
+    borderColor: _second,
+    borderWidth: 5,
   },
   tableDataTxt: {
     fontSize: 18,
     color: _main,
+    fontFamily:"Philosopher"
   },
   buyIn: {
     color: _main,
-    fontSize: 20,
-    width: 120,
-    padding: 10,
-    margin: 10,
+    fontSize: 18,
+    width: 100,
+    padding: 5,
+    margin: 5,
     borderRadius: 10,
     borderColor: _second,
-    borderWidth: 5,
+    borderLeftWidth:5,
+    borderRightWidth:2,
+    borderBottomWidth:5,
+    borderTopWidth:1
   },
   sitDownBtn: {
     margin: 10,
