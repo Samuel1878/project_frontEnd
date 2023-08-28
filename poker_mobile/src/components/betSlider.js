@@ -5,8 +5,8 @@ import { _error, _main } from "../__Style";
 export const BetSlider = ({currentTable,seatId,bet,setBet}) => {
     return (
       <Slider
-        minimumTrackTintColor={_main}
-        maximumTrackTintColor={_error}
+        minimumTrackTintColor={_error}
+        maximumTrackTintColor={_main}
         value={bet} 
         minimumValue={
             currentTable.minBet >= currentTable.callAmount

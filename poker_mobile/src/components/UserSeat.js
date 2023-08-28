@@ -4,6 +4,7 @@ import SeatTimer from "./seatTimer";
 import globalContext from "../services/global/globalContext";
 import styles from "../__Style";
 import gameContext from "../services/game/gameContext";
+import { PokerCard } from "./pokerCard";
 
 export const UserSeat = ({ currentTable, seatNumber, isPlayerSeated }) => {
 const {seatId} = useContext(gameContext);
@@ -27,6 +28,17 @@ const {seatId} = useContext(gameContext);
           <Image style={styles.seatUserImg} source={userSrc} />
         </TouchableOpacity>
       </SeatTimer>
+      <View style={styles.userHand}>
+        {
+          seat?.hand && seat?.hand.map((card,index)=>(
+              <PokerCard
+                key={index}
+                card={card}
+                width="40px"
+                height="80px"/>
+          ))
+        }
+      </View>
     </View>
   );
 };

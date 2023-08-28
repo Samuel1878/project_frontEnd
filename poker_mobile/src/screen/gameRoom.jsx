@@ -12,6 +12,8 @@ import table from "../../assets/table.svg"
 import SocketContext from "../services/socket/socketContext";
 import globalContext from "../services/global/globalContext";
 import { GameUI } from "../components/GameUI";
+import { GameInfo } from "../components/gameInfo";
+import { PokerCard } from "../components/pokerCard";
 export default GameRoom = ({navigation}) => {
    const {
     messages,
@@ -134,7 +136,16 @@ export default GameRoom = ({navigation}) => {
             </View>
           </View>
           <View style={styles.tablePart3}>
-    
+            {
+              currentTable?.board && currentTable?.board.length > 0 && 
+              <View style={styles.board}>
+                {
+                  currentTable?.board?.map((card, index)=>(
+                    <PokerCard key={index} card={card}/>
+                  )) 
+                }
+              </View>
+            }
           </View>
           <View style={styles.tablePart2}>
             <View style={styles.seat3}>
@@ -145,7 +156,34 @@ export default GameRoom = ({navigation}) => {
               />
             </View>
             <View style={styles.messagesBox}>
-
+        
+                {
+                  messages && messages.length>0 && (
+                    <>
+                      <Text>{messages[messages.length-1]}</Text>
+                      {
+                        !isPlayerSeated && (
+                          <Text>Sit down to join the game</Text>
+                        )
+                      }
+                      {
+                        currentTable?.winMessages.length>0 && (
+                          <Text>
+                            {
+                              currentTable?.winMessages[currentTable?.winMessages?.length -1]
+                            }
+                          </Text>
+                        )
+                      }
+                    </>
+                  )
+                }
+                
+                {
+                  currentTable?.winMessages?.length === 0 && (
+                    <GameInfo currentTable={currentTable}/>
+                  )
+                }
             </View>
             <View style={styles.seat2}>
               <Seat

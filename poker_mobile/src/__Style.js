@@ -577,6 +577,29 @@ const styles = StyleSheet.create({
     height: 110,
     position: "relative",
   },
+  userHand:{
+    position:"absolute",
+    top:"-50%",
+    backgroundColor:"white"
+    
+  } ,
+
+  hands:{
+    position:"absolute",
+    bottom:"-30%",
+    width:40,
+    height:80,
+    backgroundColor:"red"
+
+  },
+  ///Poker Cards
+  userCard :{
+    width:80,
+    height:80,
+    borderColor:_main,
+    borderWidth:3
+  },
+
   showProfileBtn: {
     position: "absolute",
     top: 5,
@@ -634,7 +657,16 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   messagesBox: {
-    flex: 1,
+    backgroundColor:bg_light,
+    flex:1,
+    alignItems: "center",
+    justifyContent: "center",
+
+  },
+  tableInfo:{
+    width:200,
+    paddingHorizontal:10,
+    backgroundColor:bg_light
   },
   seat3: {
     flex: 1,
@@ -646,6 +678,10 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+  },
+  board:{
+    backgroundColor:"white",
+
   },
   ///High
   tablePart4: {

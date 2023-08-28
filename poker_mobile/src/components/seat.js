@@ -3,6 +3,7 @@ import {Text,View,Image} from "react-native";
 import SeatTimer from "./seatTimer";
 import styles from "../__Style";
 import gameContext from "../services/game/gameContext";
+import { PokerCard } from "./pokerCard";
 
 export const Seat = ({
   currentTable,
@@ -30,6 +31,14 @@ const seat = currentTable?.seats[seatNumber];
          }
        
       </SeatTimer>
+      <View style={styles.hands}>
+        {
+          seat?.hand && seat?.hand.map((card,index)=>(
+            console.log(card)
+          ))
+        }
+
+      </View>
     </View>
   );
 };
