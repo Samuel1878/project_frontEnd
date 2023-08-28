@@ -15,3 +15,10 @@ web-build/
 
 # Temporary files created by Metro to check the health of the file watcher
 .metro-health-check*
+# dependencies
+/node_modules
+/.env
+/package.json
+/package-lock.json
+#from Server
+*.env
