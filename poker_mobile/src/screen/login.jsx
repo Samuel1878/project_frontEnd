@@ -16,7 +16,7 @@ const LoginScreen = ({ navigation }) => {
   const submitHandler = () => {
     if(validNo && validPwd){
       axios
-        .post("http://localhost:4001/api/account/login", {
+        .post("http://13.213.119.120:4001/api/account/login", {
         phoneNo:phoneNo,password:password
       },{
         headers:{"Content-Type":"application/json"}

@@ -38,9 +38,9 @@ const SocketProvider = ({children})=> {
             setTables(null);
     };
     function connect () {
-        const socket = io("http://localhost:4001", {
+        const socket = io("http://13.213.119.120:4001", {
           reconnectionDelayMax: 10000,
-        })
+        });
         registerCallbacks(socket);
         setSocket(socket);
         return socket;

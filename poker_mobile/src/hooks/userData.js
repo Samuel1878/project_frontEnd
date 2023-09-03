@@ -15,7 +15,7 @@ const loadUserData = (userToken) => {
   //userData
   useEffect(()=>{
      axios
-       .get("http://localhost:4001/api/userData/chip", {
+       .get("http://13.213.119.120:4001/api/userData/chip", {
          params: { token: userToken, reqData: "allData" },
          headers: { "Content-Type": "application/json" },
        })

@@ -29,7 +29,7 @@ export default Register = ({navigation}) => {
     const req2FAServer = async() => {
          axios
            .post(
-             "http://localhost:4001/api/account/2faValidation",
+             "http://13.213.119.120:4001/api/account/2faValidation",
              { phoneNo: phoneNo },
              {
                headers: { "Content-Type": "application/json" },
@@ -67,16 +67,19 @@ export default Register = ({navigation}) => {
     }
     const createUser = () => {
             axios.post(
-              "http://localhost:4001/api/account/createUser",
+              "http://13.213.119.120:4001/api/account/createUser",
               {phoneNo:phoneNo,password:password},
               {
                 headers: { "Content-Type": "application/json" },
               }
             ).then((res)=>{
                 if(res.data.code===201){
-                  navigation.navigate("login")
+                  navigation.navigate("login");
+                  return
+                } else {
+                  navigation.navigate('account')
                 }
-            })
+            }).catch(err=>console.debug(err))
     }
     const submitBtnHandler = () => {
         if (validNo && validPwd && validOTP){

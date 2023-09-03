@@ -580,7 +580,8 @@ const styles = StyleSheet.create({
   userHand:{
     position:"absolute",
     top:"-50%",
-    backgroundColor:"white"
+    backgroundColor:"white",
+    
     
   } ,
 
